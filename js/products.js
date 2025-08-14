@@ -27,8 +27,8 @@ function showCards(data) {
       <div class="card-body">
         <h5 class="card-title">${product.name}</h5>
         <p class="card-text">${product.description}</p>
-        <p class="card-text"><small class="text-muted">Cantidad de vendidos: ${product.soldCount}</small></p>
-        <p class="card-price"><small class="text-muted">${product.currency} ${product.cost}</small></p>
+        <p class="card-text">Cantidad de vendidos: ${product.soldCount}</p>
+        <p class="card-price">${product.currency} ${product.cost}</p>
       </div>
     `;
     container.appendChild(card);

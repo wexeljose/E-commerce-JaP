@@ -192,13 +192,18 @@ a.custom-card:hover {
 .card-img-top {
   height: 20rem;
   object-fit: cover;
+  border-radius: 20px;
+  margin: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .card {
   border: 1px solid #eee;
-  border-radius: 5px;
+  border-radius: 20px;
   overflow: hidden;
   transition: transform 0.2s;
+  width: 24rem;
+  margin: 2rem;
 }
 
 .card:hover {
@@ -208,14 +213,29 @@ a.custom-card:hover {
 .card-price {
   font-size: 1.25rem;
   font-weight: bold;
+  color: #dc8400;
 }
 
 .card-title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 .card-text {
   font-size: 1rem;
   color: #555;
+}
+
+.div-body {
+  padding: 1.5rem;
+  background-color: #ffffff;
+  margin: 1.5rem;
+  /* Centrar elementos hijos*/
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: #f8f8fb;
 }
