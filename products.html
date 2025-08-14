@@ -1,67 +1,157 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>eMercado - Todo lo que busques está aquí</title>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="js/products.js" defer></script>
+  </head>
 
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-</head>
+  <body>
+    <!-- BARRA DE NAVEGACION-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100 justify-content-between">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="categories.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sell.html">Vender</a>
+            </li>
+            <li class="nav-item"></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- BARRA DE NAVEGACION-->
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-          </li>
-        </ul>
+    <!-- Contenedor principal -->
+    <main class="py-5 container-fluid">
+      <div class="row mx-4">
+        <aside class="col-md-3 col-lg-2 mb-4">
+          <!-- Primera columna: logo y barra lateral-->
+
+          <!-- Logo -->
+          <div class="text-center mb-4">
+            <a href="index.html">
+              <img src="img/login.png" alt="eMercado Logo" class="img-fluid" />
+            </a>
+          </div>
+
+          <!-- Barra lateral con filtros -->
+          <div class="p-3 bg-light border rounded">
+            <!-- Keywords -->
+            <h5>Keywords</h5>
+            <div class="mb-3">
+              <span class="badge bg-primary me-1">Spring</span>
+              <span class="badge bg-primary me-1">Smart</span>
+              <span class="badge bg-primary me-1">Modern</span>
+            </div>
+
+            <!-- Filtros -->
+            <div class="mb-3">
+              <label class="form-label">Precio</label>
+              <input type="range" class="form-range" min="0" max="100" />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Color</label>
+              <ul class="list-unstyled">
+                <li><input type="checkbox" /> Label</li>
+                <li><input type="checkbox" /> Label</li>
+                <li><input type="checkbox" /> Label</li>
+              </ul>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Tamaño</label>
+              <ul class="list-unstyled">
+                <li><input type="checkbox" /> Label</li>
+                <li><input type="checkbox" /> Label</li>
+                <li><input type="checkbox" /> Label</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+
+        <main class="col-md-9 col-lg-10">
+          <!-- Segunda columna: busquedad y contenido principal-->
+          <div>
+            <div class="row" id="product-list">
+              <div>
+                class="products">
+                <img src="" alt="" />
+                <div>
+                  <h3>Chevrolet Onix Joy</h3>
+                </div>
+              </div>
+              <!-- Aquí se mostrarán las tarjetas de productos -->
+            </div>
+
+            <div>
+              <button class="btn btn-primary" id="load-more">Cargar más</button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </main>
+    <!-- Contenedor principal -->
+
+    <!-- Footer -->
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-end">
+          <a href="#">Volver arriba</a>
+        </p>
+        <p>
+          Este sitio forma parte de
+          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+            >Jovenes a Programar</a
+          >
+        </p>
+      </div>
+    </footer>
+    <!-- Footer -->
+
+    <!-- Rueda de carga -->
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
-  </nav>
-  <main class="pb-5 container">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
-    </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
-  </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/products.js"></script>
-</body>
+    <!-- Rueda de carga -->
 
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/products.js"></script>
+  </body>
 </html>
