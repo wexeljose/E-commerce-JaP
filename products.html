@@ -102,7 +102,23 @@
 
         <main class="col-md-9 col-lg-10">
           <!-- Segunda columna: busquedad y contenido principal-->
-          <div class="buscador div-body"></div>
+          <div class="buscador">
+            <form>
+              <div class="input-wrapper">
+                <input type="text" placeholder="Buscar" class="search-input" />
+                <button type="submit" class="search-btn">🔍</button>
+              </div>
+
+              <button type="button" class="filter-btn active">✔ Nuevo</button>
+              <button type="button" class="filter-btn">
+                Precio ascendente
+              </button>
+              <button type="button" class="filter-btn">
+                Precio descendente
+              </button>
+              <button type="button" class="filter-btn">Más Vendidos</button>
+            </form>
+          </div>
           <div>
             <div class="row div-body" id="product-list">
               <!-- Aquí se mostrarán las tarjetas de productos -->

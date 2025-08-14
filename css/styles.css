@@ -239,3 +239,73 @@ a.custom-card:hover {
 body {
   background-color: #f8f8fb;
 }
+
+.buscador {
+  width: 100%;
+  margin: 1.5rem auto;
+}
+
+.buscador form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.input-wrapper {
+  flex: 1; /* Ocupa todo el espacio disponible */
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 4px 10px;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 6px 8px;
+  font-size: 14px;
+  background: transparent;
+}
+
+.search-btn {
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #555;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+}
+
+.filter-btn {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 15px;
+  background-color: #e6edf3;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.2s;
+}
+
+.filter-btn:hover {
+  background-color: #d0dbe5;
+}
+
+.filter-btn.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.filter-btn.active:hover {
+  background-color: #0056b3;
+}
