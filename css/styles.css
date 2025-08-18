@@ -2,7 +2,7 @@
 .card-body,
 .container,
 .site-header {
-  font-family: 'Verdana', serif !important;
+  font-family: "Verdana", serif !important;
 }
 
 .jumbotron .display-4 {
@@ -32,8 +32,8 @@ nav a {
   height: 50vh;
   padding: 5em inherit;
   margin-bottom: 0;
-  background-color: #53C0FB;
-  background: url('../img/cover_back.png');
+  background-color: #53c0fb;
+  background: url("../img/cover_back.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -73,12 +73,12 @@ footer {
 }
 
 footer p {
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
 }
 
 .site-header a {
   color: white;
-  transition: ease-in-out color .15s;
+  transition: ease-in-out color 0.15s;
 }
 
 .site-header .dropdown-menu a {
@@ -86,7 +86,7 @@ footer p {
 }
 
 .dropzone {
-  border: 2px dashed #0087F7;
+  border: 2px dashed #0087f7;
   border-radius: 5px;
   background: white;
 }
@@ -187,4 +187,95 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+
+/* LOGIN */
+
+#bodyLogin {
+  background-color: #F8F8FB;
+}
+
+.contenedorForm {
+  box-shadow: 9px 9px 9px 0px #00000040;
+  width: 80%;
+  border: 1px solid #969696;
+  border-radius: 25px;
+  margin: auto;
+  margin-top: 80px;
+  text-align: center;
+  background-color: #ffff;
+}
+
+.contenedorForm h1 {
+  margin: 40px 0 80px 0;
+}
+
+header {
+  width: auto;
+  box-shadow: 9px 9px 9px 0px #00000040;
+  text-align: center;
+  background-color: #f8f9fa;
+}
+
+#usuario {
+  margin-bottom: 50px;
+}
+
+.contenedorCampos {
+  display: flex;
+  width: 60%;
+  margin: auto;
+  flex-direction: column;
+  align-items: flex-start;
+
+}
+
+.contenedorCampos label {
+  font-size: 20px;
+  padding-left: 14px;
+  margin-bottom: 5px;
+}
+
+.inputLogin {
+  width: 100%;
+  border-radius: 100px;
+  border: 1px solid #969696;
+  box-shadow: 9px 9px 9px 0px #00000040;
+  padding: 8px 12px
+}
+
+.aLogin {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.mensaje {
+  width: 60%;
+  margin: auto;
+  text-align: end;
+  margin-bottom: 5%;
+}
+
+.botonEnviar {
+  height: 62px;
+  width: 314px;
+  border-radius: 8px;
+  border: 1px solid #969696;
+  box-shadow: 9px 9px 9px 0px #00000040;
+  margin-bottom: 40px;
+  font-weight: bold;
+  background-color: #005A9A;
+  color: #ffff;
+  transition: color 0.3s, background-color 0.4s;
+}
+
+.botonEnviar:hover {
+  background-color: #fff;
+  color: #005A9A;
+  border: #005A9A 2px solid;
+  font-weight: bold;
+}
+
+label[for="mensajeFinal"] {
+  margin-bottom: 2%;
 }
