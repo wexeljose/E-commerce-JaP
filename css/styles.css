@@ -190,7 +190,10 @@ a.custom-card:hover {
 }
 
 .card-img-top {
-  height: 20rem;
+  align-items: center;
+  display: flex;
+  height: 15rem;
+  width: 22rem;
   object-fit: cover;
   border-radius: 20px;
   margin: 0.5rem;
@@ -249,7 +252,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #fff;
+  background: #f8f8fb;
   border-radius: 10px;
   padding: 6px 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -290,8 +293,8 @@ body {
 .filter-btn {
   border: none;
   padding: 6px 12px;
-  border-radius: 15px;
-  background-color: #e6edf3;
+  border-radius: 5px;
+  background-color: rgba(0, 90, 148, 0.2);
   cursor: pointer;
   font-size: 13px;
   transition: background-color 0.2s;
@@ -308,4 +311,10 @@ body {
 
 .filter-btn.active:hover {
   background-color: #0056b3;
+}
+
+.filtros {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1rem;
 }
