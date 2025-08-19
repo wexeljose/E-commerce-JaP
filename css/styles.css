@@ -189,7 +189,7 @@ a.custom-card:hover {
   color: orange;
 }
 
-/" Productos "/
+/* Productos */
 .card-img-top {
   align-items: center;
   display: flex;
@@ -323,7 +323,7 @@ body {
 /* LOGIN */
 
 #bodyLogin {
-  background-color: #F8F8FB;
+  background-color: #f8f8fb;
 }
 
 .contenedorForm {
@@ -358,7 +358,6 @@ header {
   margin: auto;
   flex-direction: column;
   align-items: flex-start;
-
 }
 
 .contenedorCampos label {
@@ -372,7 +371,7 @@ header {
   border-radius: 100px;
   border: 1px solid #969696;
   box-shadow: 9px 9px 9px 0px #00000040;
-  padding: 8px 12px
+  padding: 8px 12px;
 }
 
 .aLogin {
@@ -395,15 +394,15 @@ header {
   box-shadow: 9px 9px 9px 0px #00000040;
   margin-bottom: 40px;
   font-weight: bold;
-  background-color: #005A9A;
+  background-color: #005a9a;
   color: #ffff;
   transition: color 0.3s, background-color 0.4s;
 }
 
 .botonEnviar:hover {
   background-color: #fff;
-  color: #005A9A;
-  border: #005A9A 2px solid;
+  color: #005a9a;
+  border: #005a9a 2px solid;
   font-weight: bold;
 }
 
