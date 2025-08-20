@@ -9,7 +9,7 @@ function moverAIndex() {
 function revisarLogin() {
   const usuario = localStorage.getItem("usuario");
   if (usuario == null) {
-    console.log("Usuario ya está logueado: " + usuario);
+    console.log("Usuario no está logueado.");
     moverALogin();
   }
 }
