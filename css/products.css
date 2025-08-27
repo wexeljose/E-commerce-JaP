@@ -1,0 +1,12 @@
+/* Resolución estándar */
+
+
+/* Tableta en modo vertical - 768 x 1024 */
+@media (max-width: 768px){
+  
+}
+
+/* Smartphone pequeño (iPhone SE) - 320 x 568 */
+@media (max-width: 320px) {
+  
+}
