@@ -332,13 +332,13 @@ body {
   border: 1px solid #969696;
   border-radius: 25px;
   margin: auto;
-  margin-top: 80px;
+  margin-top: 11vh;
   text-align: center;
   background-color: #ffff;
 }
 
 .contenedorForm h1 {
-  margin: 40px 0 80px 0;
+  margin: 1rem 0;
 }
 
 header {
@@ -349,7 +349,7 @@ header {
 }
 
 #usuario {
-  margin-bottom: 50px;
+  margin-bottom: 1rem;
 }
 
 .contenedorCampos {
@@ -361,9 +361,9 @@ header {
 }
 
 .contenedorCampos label {
-  font-size: 20px;
+  font-size: 1.2rem;
   padding-left: 14px;
-  margin-bottom: 5px;
+  margin-bottom: 1rem;
 }
 
 .inputLogin {
@@ -383,16 +383,16 @@ header {
   width: 60%;
   margin: auto;
   text-align: end;
-  margin-bottom: 5%;
+  margin-bottom: 1rem;
 }
 
 .botonEnviar {
-  height: 62px;
-  width: 314px;
+  height: 4rem;
+  width: 12rem;
   border-radius: 8px;
   border: 1px solid #969696;
   box-shadow: 9px 9px 9px 0px #00000040;
-  margin-bottom: 40px;
+  margin-bottom: 1rem;
   font-weight: bold;
   background-color: #005a9a;
   color: #ffff;
@@ -411,5 +411,7 @@ label[for="mensajeFinal"] {
 }
 
 .logo {
-  max-height: 100px;
+  height: auto;
+  max-width: 300px;
+  width: 100%;
 }
