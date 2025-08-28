@@ -1,12 +1,231 @@
 /* Resolución estándar */
+.card {
+  width: 17rem;
+  margin: 1rem;
+}
 
+.card p {
+  margin: 0;
+}
+
+.card.shadow {
+  box-shadow: 0.5rem 0.5rem 0.8rem rgba(0, 0, 0, 0.35) !important;
+}
+
+.card-title {
+  font-size: 1.15rem;
+}
+
+.card-text {
+  font-size: 0.75rem;
+}
+
+.card-price {
+  font-size: 0.9rem;
+}
+
+.card-img-top {
+  height: 10rem;
+  width: auto;
+}
+
+.div-body {
+  justify-content: center;
+}
+
+.navegacion-pagina {
+  margin-top: 2rem;
+}
+
+#buscadorDinamico {
+  display: none;
+}
+
+#primerBuscador {
+  background: #ffff;
+}
 
 /* Tableta en modo vertical - 768 x 1024 */
-@media (max-width: 768px){
-  
+@media (max-width: 768px) {
+  body {
+    margin: 0 auto;
+    padding: 0;
+    /* width: 768px;
+    height: 1024px; */
+    overflow-x: hidden;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav.navbar {
+    padding: 1rem;
+  }
+
+  nav.navbar .navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .container-fluid {
+    padding: 0;
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  main.py-5.container-fluid {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+  }
+
+  /*sidebar*/
+  aside {
+    width: 230px;
+    padding: 1rem;
+    flex-shrink: 0;
+  }
+
+  .sidebar .text-center img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .sidebar h5 {
+    margin-bottom: 1rem;
+  }
+
+  .sidebar .form-check-label {
+    font-size: 0.85rem;
+  }
+
+  main.col-sm-9.col-lg-10 {
+    flex: 1;
+  }
+
+  .buscador form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .search-input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 22rem;
+  }
+
+  .search-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+  }
+
+  .filter-btn {
+    padding: 0.25rem 0.75rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  /*productos*/
+  .card {
+    width: 13rem;
+    margin: 0.25rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-price {
+    font-size: 0.9rem;
+  }
+
+  .card-img-top {
+    height: 8rem;
+    width: auto;
+  }
 }
 
 /* Smartphone pequeño (iPhone SE) - 320 x 568 */
 @media (max-width: 320px) {
-  
+  #filterGroup {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se muevan a una nueva línea si no caben. */
+    align-items: flex-start; /* Alinea los elementos en la parte superior del contenedor. */
+    gap: 10px; /* Agrega un espacio entre los elementos. */
+  }
+
+  #filterOptions {
+    display: flex; /* Define el contenedor de opciones como un contenedor flex. */
+    gap: 10px;
+  }
+
+  /* Se ocultan las opciones del boton de Filtros */
+  .hidden {
+    display: none !important;
+  }
+
+  /* Oculta la barra de navegación lateral y los filtros de escritorio */
+  aside.col-sm-3 {
+    display: none;
+  }
+
+  /* Ajusta el ancho de la columna principal a 100% */
+  main.col-sm-9 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  /* Oculta el buscador principal de escritorio */
+  #segundoBuscador {
+    display: none;
+  }
+
+  /* Muestra el buscador dinámico solo en móviles */
+  #buscadorDinamico {
+    display: flex !important;
+    width: 100%;
+    justify-content: left;
+    margin-bottom: 2rem;
+  }
+
+  /* Ajusta el espaciado del contenedor principal */
+  .py-5 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  /* Ajusta los márgenes en pantallas pequeñas */
+  .mx-4 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Ajusta el tamaño de la imagen del logo en móviles */
+  aside .text-center img {
+    max-width: 150px;
+  }
+
+  /* Estilo de los botones de filtro */
+  #segundoBuscador .filter-btn {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  /* Logo Mobile */
+  #logoMobile {
+    display: block !important;
+  }
 }
