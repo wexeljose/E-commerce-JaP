@@ -415,3 +415,23 @@ label[for="mensajeFinal"] {
   max-width: 300px;
   width: 100%;
 }
+
+/* Estilos para seccion de usuario */
+
+#user-avatar {
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  width: 25px;
+  height: 25px;
+}
+
+#username {
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+}
+
+#p-user-name {
+  margin: 0;
+  padding: 0;
+}
