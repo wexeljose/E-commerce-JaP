@@ -2,10 +2,8 @@
 <html lang="es">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>eMercado - Todo lo que busques está aquí</title>
 
     <link
@@ -15,8 +13,10 @@
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/products.css" rel="stylesheet" />
     <script src="js/products.js" defer></script>
     <script src="js/autorizacion.js" defer></script>
+    <script src="js/productsBoton.js" defer></script>
   </head>
 
   <body>
@@ -34,28 +34,47 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav w-100 justify-content-between">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="categories.html">Categorías</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="sell.html">Vender</a>
-            </li>
-            <li class="nav-item"></li>
-          </ul>
-        </div>
+        <button title="botonBuscador" class="btn btn-outline-light nav-search-btn" type="button" id="searchButton">
+      <i class="fas fa-search"></i>
+    </button>
+    <div id="searchBox" class="input-group search-bar d-none">
+      <input type="text" class="form-control" placeholder="Busca en Grupo 307...">
+      <button title="botonBuscadorNav" class="btn btn-outline-secondary" type="button" id="closeSearchBtn">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+            <!-- Icono de lupa de Font Awesome -->
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav w-100 justify-content-between">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="categories.html">Categorías</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="sell.html">Vender</a>
+              </li>
+
+              <li class="nav-item"></li>
+            </ul>
+          </div>
+        </li>
       </div>
     </nav>
     <!-- BARRA DE NAVEGACION-->
 
     <!-- Contenedor principal -->
-    <main class="py-5 container-fluid">
+    <main class="py-5">
       <div class="row mx-4">
-        <aside class="col-md-3 col-lg-2 mb-4">
+        <!-- Logo en mobile -->
+        <div class="text-center mb-4 d-none" id="logoMobile">
+          <a href="index.html">
+            <img src="img/logoJaP.jpg" alt="eMercado Logo" class="img-fluid" />
+          </a>
+        </div>
+        <aside class="col-sm-3 col-lg-2 mb-4">
           <!-- Primera columna: logo y barra lateral-->
 
           <!-- Logo -->
@@ -70,7 +89,7 @@
           </div>
 
           <!-- Barra lateral con filtros -->
-          <div class="p-3 bg-light border rounded">
+          <div id="primerBuscador" class="p-3 border rounded">
             <!-- Keywords -->
             <h5>Keywords</h5>
             <div class="mb-3">
@@ -203,10 +222,35 @@
             </div>
           </div>
         </aside>
+        <!-- Boton de Filtros dinamico -->
+        <div
+          id="buscadorDinamico"
+          class="buscador flex justify-end mb-4 dynamic-search-visible"
+        >
+          <div id="filterGroup" class="filter-group">
+            <button
+              id="filterButton"
+              class="main-filter-button filter-text-color"
+            >
+              Filtros
+              <i class="fas fa-filter ml-2"></i>
+            </button>
 
-        <main class="col-md-9 col-lg-10">
+            <div id="filterOptions" class="options-container hidden">
+              <button class="option-button">
+                Precio <i class="fas fa-chevron-down ml-1"></i>
+              </button>
+              <button class="option-button">
+                Precio <i class="fas fa-chevron-up ml-1"></i>
+              </button>
+              <button class="option-button">Más Vendidos</button>
+            </div>
+          </div>
+        </div>
+
+        <main class="col-sm-9 col-lg-10">
           <!-- Segunda columna: busquedad y contenido principal-->
-          <div class="buscador">
+          <div id="segundoBuscador" class="buscador">
             <form>
               <div class="input-wrapper">
                 <input type="text" placeholder="Buscar" class="search-input" />
@@ -224,12 +268,23 @@
             </form>
           </div>
           <div>
-            <div class="row div-body" id="product-list">
+            <div class="row div-body">
               <!-- Aquí se mostrarán las tarjetas de productos -->
-            </div>
+              <div class="row" id="product-list"></div>
+              <!-- Botones de navegación -->
+              <nav aria-label="Navegacion" class="navegacion-pagina">
+                <ul class="pagination justify-content-center mx-2">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">&larr;</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
 
-            <div>
-              <button class="btn btn-primary" id="load-more">Cargar más</button>
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#">&rarr;</a>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
         </main>
@@ -266,6 +321,5 @@
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js"></script>
-    <script src="js/products.js"></script>
   </body>
 </html>

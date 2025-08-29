@@ -1,0 +1,300 @@
+/* Resolución estándar */
+.card {
+  width: 17rem;
+  margin: 1rem;
+}
+
+.card p {
+  margin: 0;
+}
+
+.card.shadow {
+  box-shadow: 0.5rem 0.5rem 0.8rem rgba(0, 0, 0, 0.35) !important;
+}
+
+.card-title {
+  font-size: 1.15rem;
+}
+
+.card-text {
+  font-size: 0.75rem;
+}
+
+.card-price {
+  font-size: 0.9rem;
+}
+
+.card-img-top {
+  height: 10rem;
+  width: auto;
+}
+
+.div-body {
+  justify-content: center;
+}
+
+.navegacion-pagina {
+  margin-top: 2rem;
+}
+
+#buscadorDinamico {
+  display: none;
+}
+
+#primerBuscador {
+  background: #ffff;
+}
+
+/* Tableta en modo vertical - 768 x 1024 */
+@media (max-width: 768px) {
+  body {
+    margin: 0 auto;
+    padding: 0;
+    /* width: 768px;
+    height: 1024px; */
+    overflow-x: hidden;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav.navbar {
+    padding: 1rem;
+  }
+
+  nav.navbar .navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .container-fluid {
+    padding: 0;
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  main.py-5.container-fluid {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+  }
+
+  /*sidebar*/
+  aside {
+    width: 230px;
+    padding: 1rem;
+    flex-shrink: 0;
+  }
+
+  .sidebar .text-center img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .sidebar h5 {
+    margin-bottom: 1rem;
+  }
+
+  .sidebar .form-check-label {
+    font-size: 0.85rem;
+  }
+
+  main.col-sm-9.col-lg-10 {
+    flex: 1;
+  }
+
+  .buscador form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .search-input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 22rem;
+  }
+
+  .search-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+  }
+
+  .filter-btn {
+    padding: 0.25rem 0.75rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  /*productos*/
+  .card {
+    width: 13rem;
+    margin: 0.25rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-price {
+    font-size: 0.9rem;
+  }
+
+  .card-img-top {
+    height: 8rem;
+    width: auto;
+  }
+}
+
+/* Smartphone pequeño (iPhone SE) - 320 x 568 */
+@media (max-width: 320px) {
+  /* Estilo aplicado SOLO cuando la pantalla es de 320px o menos */
+
+  #filterGroup {
+    display: flex; /* Convierte el grupo de filtros en un contenedor flex */
+    flex-wrap: wrap; /* Permite que los elementos salten de línea si no caben */
+    align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+    gap: 10px; /* Espacio entre los elementos dentro del grupo */
+  }
+
+  .filter-group {
+    margin-right: 15px;
+    margin-left: auto;
+    padding: 5px;
+  }
+  .filter-group.active .options-container {
+    max-width: calc(100vw - 30px);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .main-filter-button {
+    min-width: 80px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  #filterOptions {
+    display: flex; /* Hace que las opciones de filtros estén en fila */
+    gap: 10px; /* Espacio entre cada opción de filtro */
+  }
+
+  .hidden {
+    display: none !important; /* Fuerza que los elementos con esta clase se oculten */
+  }
+
+  aside.col-sm-3 {
+    display: none; /* Oculta la barra lateral (columna de 3 partes en Bootstrap) */
+  }
+
+  main.col-sm-9 {
+    flex: 0 0 100%; /* Hace que la columna principal ocupe todo el ancho */
+    max-width: 100%; /* Asegura que no se limite el ancho */
+  }
+
+  #segundoBuscador {
+    display: none; /* Oculta el buscador principal de escritorio */
+  }
+
+  #buscadorDinamico {
+    
+    display: flex !important; /* Muestra el buscador dinámico en móviles */
+    width: 100%; /* Lo hace ocupar todo el ancho */
+    justify-content: right; /* Alinea el contenido hacia la derecha */
+    margin-bottom: 2rem; /* Espacio debajo del buscador */
+  }
+
+  .filter-text-color {
+  color: white;
+}
+
+
+/* Estilo base para los botones de opción */
+.option-button {
+  /* Asegúrate de que tus botones tengan un padding, borde, etc. si lo necesitan */
+  padding: 8px 9px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent; /* Por defecto, transparente o el color que desees para el estado base */
+  color: #333; /* Color de texto por defecto */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+  font-size: 14px;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 500px; /* Ajusta el ancho según sea necesario */
+  margin-right: 15px; /* Espacio a la derecha si lo necesitas */
+}
+
+/* Estilo para el botón seleccionado */
+.option-button.selected {
+  background-color: #005A94; /* Color principal */
+  color: white; /* Texto blanco para mayor contraste */
+}
+
+/* Estilo para los botones no seleccionados */
+.option-button:not(.selected) {
+  background-color: rgba(0, 90, 148, 0.25); /* #005A94 con 25% de opacidad */
+  color: #000000; /* Color del texto del mismo tono pero más oscuro o el que prefieras */
+}
+
+  #filterButton {
+    background-color: #005a94;
+    
+    margin-left: auto; /* fuerza al botón a irse a la derecha */
+  }
+
+  .py-5 {
+    padding-top: 1rem !important; /* Reduce el padding superior */
+    padding-bottom: 1rem !important; /* Reduce el padding inferior */
+  }
+
+  .mx-4 {
+    margin-left: 0 !important; /* Elimina margen izquierdo */
+    margin-right: 0 !important; /* Elimina margen derecho */
+  }
+
+  aside .text-center img {
+    max-width: 150px; /* Reduce el tamaño del logo dentro del aside */
+  }
+
+  #segundoBuscador .filter-btn {
+    width: 100%; /* Los botones de filtro ocupan todo el ancho */
+    margin-bottom: 5px; /* Separa los botones entre sí */
+  }
+
+  #logoMobile {
+    display: block !important; /* Muestra el logo alternativo para móviles */
+  }
+
+  .nav-search-btn {
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 8px 12px; /* Ajuste del padding */
+    font-size: 1.1rem; /* Tamaño del icono */
+    line-height: 1; /* Para alinear mejor el icono */
+    border-color: #6c757d; /* Color del borde, similar a tu ejemplo */
+    color: #f8f9fa; /* Color blanco para el icono */
+    background-color: transparent; /* Fondo transparente */
+    transition: all 0.2s ease; /* Transición suave para el hover */
+  }
+
+  .nav-search-btn {
+    padding: 6px 10px; /* Menor padding en móviles */
+    font-size: 1rem; /* Icono ligeramente más pequeño */
+  }
+  .navbar-nav {
+    display: flex;
+    align-items:start; /* Asegura que todos los elementos de la nav estén alineados verticalmente */
+  }
+}

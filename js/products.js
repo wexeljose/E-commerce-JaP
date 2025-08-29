@@ -21,13 +21,14 @@ function showCards(data) {
 
   data.products.forEach((product) => {
     const card = document.createElement("div");
-    card.className = "card mb-4";
+    card.className = "card mb-2 shadow";
     card.innerHTML = `
       <img src="${product.image}" class="card-img-top" alt="${product.name}">
       <div class="card-body">
         <h5 class="card-title">${product.name}</h5>
         <p class="card-text">${product.description}</p>
         <p class="card-text">Cantidad de vendidos: ${product.soldCount}</p>
+        <br>
         <p class="card-price">${product.currency} ${product.cost}</p>
       </div>
     `;
