@@ -4,7 +4,8 @@ function init() {
 }
 
 function loadProducts() {
-  fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
+  const catID = localStorage.getItem("catID");
+  fetch(`https://japceibal.github.io/emercado-api/cats_products/${catID}.json`)
     .then((response) => response.json())
     .then((data) => {
       console.log("Productos cargados:", data);
