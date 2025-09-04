@@ -1,3 +1,5 @@
+let ALL_PRODUCTS = [];
+
 function init() {
   console.log("Aplicación inicializada");
   loadProducts();
@@ -9,7 +11,10 @@ function loadProducts() {
     .then((response) => response.json())
     .then((data) => {
       console.log("Productos cargados:", data);
+      ALL_PRODUCTS = data.products;
       showCards(data);
+      setupLiveSearch();   // buscador en página
+      setupNavSearch();    // buscador en la barra de navegación
     })
     .catch((error) => {
       console.error("Error al cargar productos:", error);
@@ -35,6 +40,59 @@ function showCards(data) {
     `;
     container.appendChild(card);
   });
+}
+
+function filtrarProductos(query) { 
+  const q = query.trim().toLowerCase();
+  if (!q) {
+    showCards({ products: ALL_PRODUCTS });
+    return;
+  }
+  const filtered = ALL_PRODUCTS.filter(
+    (p) =>
+      (p.name && p.name.toLowerCase().includes(q)) ||
+      (p.description && p.description.toLowerCase().includes(q))
+  );
+  showCards({ products: filtered });
+}
+
+function setupLiveSearch() { /* Busqueda en Vivo */
+  const form = document.querySelector("#segundoBuscador form");
+  if (form) form.addEventListener("submit", (e) => e.preventDefault());
+
+  let input = document.querySelector("#segundoBuscador input");
+  if (input) input.type = "search";
+
+  input.addEventListener("input", (e) => {
+    filtrarProductos(e.target.value);
+  });
+}
+
+function setupNavSearch() { /* Funcion para la busqueda */
+  const searchBtn = document.getElementById("searchButton");
+  const searchBox = document.getElementById("searchBox");
+  const closeBtn = document.getElementById("closeSearchBtn");
+  const navInput = searchBox ? searchBox.querySelector("input") : null;
+
+  if (searchBtn && searchBox && closeBtn && navInput) {
+    // Mostrar el cuadro de búsqueda
+    searchBtn.addEventListener("click", () => {
+      searchBox.classList.remove("d-none");
+      navInput.focus();
+    });
+
+    // Cerrar el cuadro de búsqueda
+    closeBtn.addEventListener("click", () => {
+      searchBox.classList.add("d-none");
+      navInput.value = "";
+      showCards({ products: ALL_PRODUCTS }); // resetear lista
+    });
+
+    // Filtrar en vivo desde el input del nav
+    navInput.addEventListener("input", (e) => {
+      filtrarProductos(e.target.value);
+    });
+  }
 }
 
 init();

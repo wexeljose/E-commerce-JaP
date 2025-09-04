@@ -231,6 +231,10 @@
   font-size: 14px;
 }
 
+#searchButton {
+  display: block !important; /* Se muetra el boton de busqueda */
+}
+
 .search-bar {
   width: 100%;
   max-width: 500px; /* Ajusta el ancho según sea necesario */
