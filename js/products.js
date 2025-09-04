@@ -1,29 +1,30 @@
-let ALL_PRODUCTS = [];
+let ALL_PRODUCTS = []; // Guarda todos los productos cargados desde la API
 
+// Inicializa la aplicación
 function init() {
   console.log("Aplicación inicializada");
-  loadProducts();
+  loadProducts(); // Carga los productos desde la API
 }
 
+// Carga los productos según la categoría seleccionada
 function loadProducts() {
-  const catID = localStorage.getItem("catID");
+  const catID = localStorage.getItem("catID"); // Obtiene la categoría del localStorage
   fetch(`https://japceibal.github.io/emercado-api/cats_products/${catID}.json`)
     .then((response) => response.json())
     .then((data) => {
       console.log("Productos cargados:", data);
-      ALL_PRODUCTS = data.products;
-      showCards(data);
-      setupLiveSearch();   // buscador en página
-      setupNavSearch();    // buscador en la barra de navegación
+      ALL_PRODUCTS = data.products; // Guarda los productos en la variable global
+      showCards(data);             // Muestra las tarjetas de productos en la página
+      setupLiveSearch();           // Configura el buscador de la página
+      setupNavSearch();            // Configura el buscador de la barra de navegación
     })
-    .catch((error) => {
-      console.error("Error al cargar productos:", error);
-    });
+    .catch((error) => console.error("Error al cargar productos:", error));
 }
 
+// Muestra las tarjetas de productos en el contenedor #product-list
 function showCards(data) {
   const container = document.getElementById("product-list");
-  container.innerHTML = "";
+  container.innerHTML = ""; // Limpia el contenido anterior
 
   data.products.forEach((product) => {
     const card = document.createElement("div");
@@ -38,61 +39,65 @@ function showCards(data) {
         <p class="card-price">${product.currency} ${product.cost}</p>
       </div>
     `;
-    container.appendChild(card);
+    container.appendChild(card); // Agrega la tarjeta al contenedor
   });
 }
 
-function filtrarProductos(query) { 
-  const q = query.trim().toLowerCase();
-  if (!q) {
-    showCards({ products: ALL_PRODUCTS });
+// Filtra los productos según el texto ingresado
+function filtrarProductos(query) {
+  const q = query.trim().toLowerCase(); // Convierte la búsqueda a minúsculas
+  if (!q) { 
+    showCards({ products: ALL_PRODUCTS }); // Si el campo está vacío, muestra todos
     return;
   }
+  // Filtra productos que contengan el texto en nombre o descripción
   const filtered = ALL_PRODUCTS.filter(
     (p) =>
       (p.name && p.name.toLowerCase().includes(q)) ||
       (p.description && p.description.toLowerCase().includes(q))
   );
-  showCards({ products: filtered });
+  showCards({ products: filtered }); // Muestra los productos filtrados
 }
 
-function setupLiveSearch() { /* Busqueda en Vivo */
+// Configura el buscador de la página
+function setupLiveSearch() { 
   const form = document.querySelector("#segundoBuscador form");
-  if (form) form.addEventListener("submit", (e) => e.preventDefault());
+  if (form) form.addEventListener("submit", (e) => e.preventDefault()); // Evita recargar la página al hacer submit
 
   let input = document.querySelector("#segundoBuscador input");
-  if (input) input.type = "search";
+  if (input) input.type = "search"; // Cambia el input a tipo búsqueda
 
-  input.addEventListener("input", (e) => {
-    filtrarProductos(e.target.value);
+  input.addEventListener("input", (e) => { // Escucha cada cambio en el input
+    filtrarProductos(e.target.value);       // Filtra los productos en tiempo real
   });
 }
 
-function setupNavSearch() { /* Funcion para la busqueda */
-  const searchBtn = document.getElementById("searchButton");
-  const searchBox = document.getElementById("searchBox");
-  const closeBtn = document.getElementById("closeSearchBtn");
-  const navInput = searchBox ? searchBox.querySelector("input") : null;
+// Configura el buscador en la barra de navegación
+function setupNavSearch() { 
+  const searchBtn = document.getElementById("searchButton"); // Botón para mostrar input
+  const searchBox = document.getElementById("searchBox");    // Contenedor del input
+  const closeBtn = document.getElementById("closeSearchBtn"); // Botón cerrar
+  const navInput = searchBox ? searchBox.querySelector("input") : null; // Input del navbar
 
   if (searchBtn && searchBox && closeBtn && navInput) {
-    // Mostrar el cuadro de búsqueda
-    searchBtn.addEventListener("click", () => {
-      searchBox.classList.remove("d-none");
-      navInput.focus();
+    navInput.type = "search"; // Cambia el input a tipo búsqueda
+
+    searchBtn.addEventListener("click", () => { // Al hacer click en el botón
+      searchBox.classList.remove("d-none"); // Muestra el input
+      navInput.focus(); // Pone el foco en el input
     });
 
-    // Cerrar el cuadro de búsqueda
-    closeBtn.addEventListener("click", () => {
-      searchBox.classList.add("d-none");
-      navInput.value = "";
-      showCards({ products: ALL_PRODUCTS }); // resetear lista
+    closeBtn.addEventListener("click", () => { // Al cerrar el buscador
+      searchBox.classList.add("d-none"); // Oculta el input
+      navInput.value = "";               // Limpia el input
+      showCards({ products: ALL_PRODUCTS }); // Resetea la lista de productos
     });
 
-    // Filtrar en vivo desde el input del nav
-    navInput.addEventListener("input", (e) => {
-      filtrarProductos(e.target.value);
+    navInput.addEventListener("input", (e) => { // Escucha cambios en input navbar
+      filtrarProductos(e.target.value);          // Filtra en tiempo real
     });
   }
 }
 
+// Inicia la aplicación
 init();
