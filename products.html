@@ -33,16 +33,16 @@
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
+          <!-- Botón de búsqueda navbar -->
+        <button title="botonBuscador" class="btn btn-outline-light nav-search-btn" type="button" id="searchButton" hidden>
+          <i class="fas fa-search"></i>
         </button>
-        <button title="botonBuscador" class="btn btn-outline-light nav-search-btn" type="button" id="searchButton">
-      <i class="fas fa-search"></i>
-    </button>
-    <div id="searchBox" class="input-group search-bar d-none">
-      <input type="text" class="form-control" placeholder="Busca en Grupo 307...">
-      <button title="botonBuscadorNav" class="btn btn-outline-secondary" type="button" id="closeSearchBtn">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
+        <div id="searchBox" class="input-group search-bar d-none">
+          <input type="search" class="form-control" placeholder="Busca en Grupo 307..."> <!-- pancho -->
+          <button title="botonBuscadorNav" class="btn btn-outline-secondary" type="button" id="closeSearchBtn">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
             <!-- Icono de lupa de Font Awesome -->
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
@@ -250,6 +250,10 @@
                 Precio <i class="fas fa-chevron-up ml-1"></i>
               </button>
               <button class="option-button">Más Vendidos</button>
+              <div> <!-- Maximo y Minimo en Celular -->
+                <input type="number" class="form-control" placeholder="Max">
+              <input type="number" class="form-control" placeholder="Min">
+              </div>
             </div>
           </div>
         </div>
@@ -259,7 +263,7 @@
           <div id="segundoBuscador" class="buscador">
             <form>
               <div class="input-wrapper">
-                <input type="text" placeholder="Buscar" class="search-input" />
+                <input type="search" placeholder="Buscar" class="search-input" /> 
                 <button type="submit" class="search-btn">🔍</button>
               </div>
 
