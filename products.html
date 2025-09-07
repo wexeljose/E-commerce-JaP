@@ -17,6 +17,7 @@
     <script src="js/products.js" defer></script>
     <script src="js/autorizacion.js" defer></script>
     <script src="js/productsBoton.js" defer></script>
+    <script src="js/productsFiltros.js" defer></script>
   </head>
 
   <body>
@@ -153,18 +154,23 @@
             </div>
 
             <div class="mb-3">
-              <div class="d-flex justify-content-between">
-                <label class="form-label" for="sliderPrecio">Precio</label>
-                <span>$0-100</span>
+              <label class="form-label" for="sliderPrecio">Precio</label>
+              <div class="d-flex">
+                <input
+                  id="inputPriceMin"
+                  type="number"
+                  class="form-control me-2"
+                  placeholder="Min"
+                  min="0"
+                />
+                <input
+                  id="inputPriceMax"
+                  type="number"
+                  class="form-control"
+                  placeholder="Max"
+                  min="0"
+                />
               </div>
-              <input
-                id="sliderPrecio"
-                type="range"
-                class="form-range"
-                min="0"
-                max="100"
-                value="100"
-              />
             </div>
 
             <div class="mb-3">
@@ -243,16 +249,16 @@
             </button>
 
             <div id="filterOptions" class="options-container hidden">
-              <button class="option-button">
+              <button class="option-button" id="btnFilterRelevantMobile">Más Vendidos</button>
+              <button class="option-button" id="btnFilterPriceDescMobile">
                 Precio <i class="fas fa-chevron-down ml-1"></i>
               </button>
-              <button class="option-button">
+              <button class="option-button" id="btnFilterPriceAscMobile">
                 Precio <i class="fas fa-chevron-up ml-1"></i>
               </button>
-              <button class="option-button">Más Vendidos</button>
               <div> <!-- Maximo y Minimo en Celular -->
-                <input type="number" class="form-control" placeholder="Max">
-              <input type="number" class="form-control" placeholder="Min">
+                <input id="inputPriceMinMobile" type="number" class="form-control" placeholder="Min">
+                <input id="inputPriceMaxMobile" type="number" class="form-control" placeholder="Max">
               </div>
             </div>
           </div>
@@ -267,14 +273,14 @@
                 <button type="submit" class="search-btn">🔍</button>
               </div>
 
-              <button type="button" class="filter-btn active">✔ Nuevo</button>
-              <button type="button" class="filter-btn">
+              <button type="button" id="btnFilterNew" class="filter-btn active">✔ Nuevo</button>
+              <button type="button" id="btnFilterPriceAsc" class="filter-btn">
                 Precio ascendente
               </button>
-              <button type="button" class="filter-btn">
+              <button type="button" id="btnFilterPriceDesc" class="filter-btn">
                 Precio descendente
               </button>
-              <button type="button" class="filter-btn">Más Vendidos</button>
+              <button type="button" id="btnFilterRelevant" class="filter-btn">Más Vendidos</button>
             </form>
           </div>
           <div>

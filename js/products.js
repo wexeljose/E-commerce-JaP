@@ -1,5 +1,15 @@
 let ALL_PRODUCTS = []; // Guarda todos los productos cargados desde la API
 
+// Filtros de ordenamiento
+const ORDER_DEFAULT = "Pred";
+const ORDER_ASC_BY_PRICE = "PriceAsc";
+const ORDER_DESC_BY_PRICE = "PriceDesc";
+const ORDER_BY_SOLD_COUNT = "Vend.";
+let searchQuery = undefined;
+let currentSortCriteria = undefined;
+let minPrice = undefined;
+let maxPrice = undefined;
+
 // Inicializa la aplicación
 function init() {
   console.log("Aplicación inicializada");
@@ -34,7 +44,7 @@ function showCards(data) {
       <div class="card-body">
         <h5 class="card-title">${product.name}</h5>
         <p class="card-text">${product.description}</p>
-        <p class="card-text">Cantidad de vendidos: ${product.soldCount}</p>
+        <p class="card-text vendidos-text">Cantidad de vendidos: ${product.soldCount}</p>
         <br>
         <p class="card-price">${product.currency} ${product.cost}</p>
       </div>
@@ -43,19 +53,37 @@ function showCards(data) {
   });
 }
 
-// Filtra los productos según el texto ingresado
-function filtrarProductos(query) {
-  const q = query.trim().toLowerCase(); // Convierte la búsqueda a minúsculas
-  if (!q) { 
-    showCards({ products: ALL_PRODUCTS }); // Si el campo está vacío, muestra todos
-    return;
+// Filtra los productos según la búsqueda y los rangos de precio
+function filtrarProductos() {
+  let filtered = [...ALL_PRODUCTS]; // Copia todos los productos inicialmente
+  console.log("Filtrando productos:", { searchQuery, minPrice, maxPrice, currentSortCriteria });
+
+  // Filtra por búsqueda
+  if (searchQuery !== undefined) {
+    var q = searchQuery.toLowerCase().trim();
+    if (q) { 
+      filtered = filtered.filter(
+        (p) =>
+          (p.name && p.name.toLowerCase().includes(q)) ||
+          (p.description && p.description.toLowerCase().includes(q))
+      );
+    }
   }
-  // Filtra productos que contengan el texto en nombre o descripción
-  const filtered = ALL_PRODUCTS.filter(
-    (p) =>
-      (p.name && p.name.toLowerCase().includes(q)) ||
-      (p.description && p.description.toLowerCase().includes(q))
-  );
+
+  // Filtra por rango de precios
+  if (minPrice !== undefined) {
+    filtered = filtered.filter((p) => p.cost >= minPrice);
+  }
+
+  if (maxPrice !== undefined) {
+    filtered = filtered.filter((p) => p.cost <= maxPrice);
+  }
+
+  // Ordena los productos si hay un criterio seleccionado
+  if (currentSortCriteria !== undefined) {
+    filtered = sortArrayByCriteria(currentSortCriteria, filtered);
+  }
+
   showCards({ products: filtered }); // Muestra los productos filtrados
 }
 
@@ -68,7 +96,8 @@ function setupLiveSearch() {
   if (input) input.type = "search"; // Cambia el input a tipo búsqueda
 
   input.addEventListener("input", (e) => { // Escucha cada cambio en el input
-    filtrarProductos(e.target.value);       // Filtra los productos en tiempo real
+    searchQuery = e.target.value; // Actualiza la variable global
+    filtrarProductos();       // Filtra los productos en tiempo real
   });
 }
 
@@ -90,14 +119,64 @@ function setupNavSearch() {
     closeBtn.addEventListener("click", () => { // Al cerrar el buscador
       searchBox.classList.add("d-none"); // Oculta el input
       navInput.value = "";               // Limpia el input
-      showCards({ products: ALL_PRODUCTS }); // Resetea la lista de productos
+      searchQuery = undefined;          // Resetea la variable global
+      filtrarProductos();               // Muestra todos los productos
     });
 
     navInput.addEventListener("input", (e) => { // Escucha cambios en input navbar
-      filtrarProductos(e.target.value);          // Filtra en tiempo real
+      searchQuery = e.target.value; // Actualiza la variable global
+      filtrarProductos();          // Filtra en tiempo real
     });
   }
 }
 
 // Inicia la aplicación
 init();
+
+// Funciones para establecer filtros
+
+function setMinPrice(price) {
+    minPrice = price;
+    filtrarProductos();
+}
+
+function setMaxPrice(price) {
+    maxPrice = price;
+    filtrarProductos();
+}
+
+function setSortCriteria(criteria) {
+    currentSortCriteria = criteria;
+    filtrarProductos();
+}
+
+function sortArrayByCriteria(criteria, array){
+    let result = [];
+    if (criteria === ORDER_ASC_BY_PRICE)
+    {
+        result = array.sort(function(a, b) {
+            if ( a.cost < b.cost ){ return -1; }
+            if ( a.cost > b.cost ){ return 1; }
+            return 0;
+        });
+    }else if (criteria === ORDER_DESC_BY_PRICE){
+        result = array.sort(function(a, b) {
+            if ( a.cost > b.cost ){ return -1; }
+            if ( a.cost < b.cost ){ return 1; }
+            return 0;
+        });
+    }else if (criteria === ORDER_BY_SOLD_COUNT){
+        result = array.sort(function(a, b) {
+            let aCount = parseInt(a.soldCount);
+            let bCount = parseInt(b.soldCount);
+
+            if ( aCount > bCount ){ return -1; }
+            if ( aCount < bCount ){ return 1; }
+            return 0;
+        });
+    }else {
+        result = array;
+    }
+
+    return result;
+}

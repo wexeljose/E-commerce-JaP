@@ -15,42 +15,6 @@ filterButton.addEventListener("click", () => {
   filterOptions.classList.toggle("hidden");
 });
 
-
-// ---
-// Este bloque maneja la lógica para seleccionar un solo botón de opción (Precio, Más Vendidos)
-// y aplicar un estilo "seleccionado".
-document.addEventListener("DOMContentLoaded", () => {
-  // Obtiene el botón principal de "Filtros".
-  const filterButton = document.getElementById("filterButton");
-  // Obtiene el contenedor de las opciones de filtro.
-  const filterOptions = document.getElementById("filterOptions");
-  // Selecciona todos los botones con la clase 'option-button'.
-  const optionButtons = document.querySelectorAll(".option-button");
-
-  // Maneja los clics en cada uno de los botones de opción.
-  optionButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      // 1. Itera sobre todos los botones de opción.
-      optionButtons.forEach((btn) => 
-        // y remueve la clase 'selected' de cada uno.
-        // Esto asegura que solo un botón pueda estar seleccionado a la vez.
-        btn.classList.remove("selected")
-      );
-
-      // 2. Añade la clase 'selected' únicamente al botón que fue clicado,
-      // aplicando el estilo de botón seleccionado (color de fondo, color de texto, etc.).
-      button.classList.add("selected");
-    });
-  });
-
-  // Opcional: Esto selecciona el primer botón de la lista al cargar la página,
-  // dándole un estado inicial de "seleccionado".
-  if (optionButtons.length > 0) {
-    optionButtons[0].classList.add("selected");
-  }
-});
-
-
 // ---
 // Este bloque de código controla la visibilidad del buscador
 // en la barra de navegación cuando se hace clic en la lupa.

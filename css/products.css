@@ -45,6 +45,11 @@
   background: #ffff;
 }
 
+.vendidos-text {
+  color: #005a94;
+  font-weight: bold;
+}
+
 /* Tableta en modo vertical - 768 x 1024 */
 @media (max-width: 768px) {
   body {
