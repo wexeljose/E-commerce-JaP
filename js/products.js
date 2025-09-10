@@ -50,13 +50,13 @@ function showCards(data) {
       </div>
     `;
     
-  // CONSIGNA: guardar el ID del producto y redirigir al detalle
+  
   card.addEventListener("click", function () {
     localStorage.setItem("productID", String(product.id));
     window.location.href = "product-info.html";
   });
 
-  container.appendChild(card); // Agrega la tarjeta al contenedor
+  container.appendChild(card); 
   });
 }
 
