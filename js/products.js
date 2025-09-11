@@ -49,7 +49,14 @@ function showCards(data) {
         <p class="card-price">${product.currency} ${product.cost}</p>
       </div>
     `;
-    container.appendChild(card); // Agrega la tarjeta al contenedor
+    
+  
+  card.addEventListener("click", function () {
+    localStorage.setItem("productID", String(product.id));
+    window.location.href = "product-info.html";
+  });
+
+  container.appendChild(card); 
   });
 }
 
