@@ -55,75 +55,124 @@
         </div>
       </div>
     </nav>
-<main>
-  <div class="container mt-4">
-    <!-- Producto -->
-    <div class="row">
-      <div class="col-md-6">
-        <div class="col-md-6">
-            <!-- Imagen principal -->
-            <img id="imagen-principal" src="img/product1.jpg" class="img-fluid border rounded mb-3" alt="Imagen del producto">
+    <main>
+      <div class="container mt-4">
+        <!-- Producto -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="col-md-6">
+              <!-- Imagen principal -->
+              <img
+                id="imagen-principal"
+                src="img/product1.jpg"
+                class="img-fluid border rounded mb-3"
+                alt="Imagen del producto"
+              />
 
-  <!-- Miniaturas -->
-      <div class="d-flex gap-2">
-           <img src="img/product1.jpg" class="img-thumbnail miniatura" alt="Imagen 1" style="width:80px; cursor:pointer;">
-           <img src="img/product2.jpg" class="img-thumbnail miniatura" alt="Imagen 2" style="width:80px; cursor:pointer;">
-           <img src="img/product3.jpg" class="img-thumbnail miniatura" alt="Imagen 3" style="width:80px; cursor:pointer;">
-      </div>
-    </div>
-      </div>
-      <div class="col-md-6">
-        <h1>Suzuki Celerio</h1>
-        <span class="badge bg-warning text-dark">Autos</span>
-        <p>Cantidad de vendidos: 25</p>
-        <p class="h4">$12500</p>
-        <p class="border rounded p-2">Un auto que se ha ganado la buena fama por su economía con el combustible.</p>
-        <button class="btn btn-primary">Comprar</button>
-      </div>
-    </div>
+              <!-- Miniaturas -->
+              <div class="d-flex gap-2">
+                <img
+                  src="img/product1.jpg"
+                  class="img-thumbnail miniatura"
+                  alt="Imagen 1"
+                  style="width: 80px; cursor: pointer"
+                />
+                <img
+                  src="img/product2.jpg"
+                  class="img-thumbnail miniatura"
+                  alt="Imagen 2"
+                  style="width: 80px; cursor: pointer"
+                />
+                <img
+                  src="img/product3.jpg"
+                  class="img-thumbnail miniatura"
+                  alt="Imagen 3"
+                  style="width: 80px; cursor: pointer"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h1>Suzuki Celerio</h1>
+            <span class="badge bg-warning text-dark">Autos</span>
+            <p>Cantidad de vendidos: 25</p>
+            <p class="h4">$12500</p>
+            <p class="border rounded p-2">
+              Un auto que se ha ganado la buena fama por su economía con el
+              combustible.
+            </p>
+            <button class="btn btn-primary">Comprar</button>
+          </div>
+        </div>
 
-    <!-- Reviews -->
-    <h2 class="mt-5">Reviews</h2>
-    <div id="reviews" class="row g-3">
-      <div class="col-md-4">
-        <div class="border rounded p-3">
-          <strong>alfredo_bioy</strong>
-          <p>Gran opción. Bueno, bonito y barato</p>
-          <small>2022-02-15</small>
+        <!-- Reviews -->
+        <h2 class="mt-5">Reviews</h2>
+        <div id="reviews" class="row g-3">
+          <div class="col-md-4">
+            <div class="border rounded p-3">
+              <strong>alfredo_bioy</strong>
+              <p>Gran opción. Bueno, bonito y barato</p>
+              <small>2022-02-15</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="border rounded p-3">
+              <strong>alfredo_bioy</strong>
+              <p>Gran opción. Bueno, bonito y barato</p>
+              <small>2022-02-15</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="border rounded p-3">
+              <strong>alfredo_bioy</strong>
+              <p>Gran opción. Bueno, bonito y barato</p>
+              <small>2022-02-15</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comentar -->
+        <div class="mt-5">
+          <h2>Comentar</h2>
+          <textarea
+            id="comentario"
+            class="form-control mb-2"
+            placeholder="Escribe tu comentario..."
+          ></textarea>
+          <label for="puntuacion">Puntuación:</label>
+          <select id="puntuacion" class="form-select w-auto mb-2">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <button id="enviar" class="btn btn-primary">Enviar</button>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="border rounded p-3">
-          <strong>alfredo_bioy</strong>
-          <p>Gran opción. Bueno, bonito y barato</p>
-          <small>2022-02-15</small>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="border rounded p-3">
-          <strong>alfredo_bioy</strong>
-          <p>Gran opción. Bueno, bonito y barato</p>
-          <small>2022-02-15</small>
-        </div>
-      </div>
-    </div>
 
-    <!-- Comentar -->
-    <div class="mt-5">
-      <h2>Comentar</h2>
-      <textarea id="comentario" class="form-control mb-2" placeholder="Escribe tu comentario..."></textarea>
-      <label for="puntuacion">Puntuación:</label>
-      <select id="puntuacion" class="form-select w-auto mb-2">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-      <button id="enviar" class="btn btn-primary">Enviar</button>
-    </div>
-  </div>
-</main>
+      <hr class="my-5" />
+      <!-- Productos relacionados -->
+      <div class="container">
+        <h2>Productos relacionados</h2>
+        <div class="row g-3">
+          <div class="d-flex" id="related-products">
+            <div class="card h-100 cards-product">
+              <img
+                src="img/product1.jpg"
+                class="card-img-top"
+                alt="Producto 1"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Producto 1</h5>
+                <p class="card-text">$100</p>
+                <a href="#" class="btn btn-primary">Ver más</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
     <footer class="text-muted">
       <div class="container">
         <p class="float-end">
