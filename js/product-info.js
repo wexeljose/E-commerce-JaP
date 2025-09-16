@@ -50,15 +50,16 @@ document.addEventListener("DOMContentLoaded", () => {
         p.relatedProducts.forEach((rp) => {
           // Cada producto relacionado ingresar en el siguiente formato:
           const card = document.createElement("div");
-          card.className = "card mb-2 shadow cards-product col-md-3";
+          card.className = "card mb-2 shadow cards-product";
           card.style = "cursor: pointer;";
           card.innerHTML = `
-             <img src="${rp.image || ""}" class="card-img-top" alt="${
+             <img src="${
+               rp.image || ""
+             }" style="object-fit: contain" class="card-img-top img-fluid" alt="${
             rp.name || ""
           }">
              <div class="card-body">
                <h5 class="card-title">${rp.name || ""}</h5>
-                <a href="#" class="btn btn-primary">Ver más</a>
              </div>
            `;
           // Al hacer click en el producto relacionado, se debe guardar

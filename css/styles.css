@@ -221,7 +221,7 @@ a.custom-card:hover {
 }
 
 .card-title {
-  font-size: 2rem;
+  font-size: 150%;
   font-weight: bold;
 }
 
@@ -434,4 +434,11 @@ label[for="mensajeFinal"] {
 #p-user-name {
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 320px) {
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
 }
