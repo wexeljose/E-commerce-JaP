@@ -93,12 +93,12 @@ document.addEventListener("DOMContentLoaded", () => {
       card.className = "border rounded p-3";
 
       const score = Number(c.score) || 0;
-      const estrellas = "★".repeat(score) + "☆".repeat(5 - score);
+      const estrellas = getStars(Number(score));
 
       card.innerHTML = `
         <strong>${c.user || "Anónimo"}</strong>
         <p>${c.description || ""}</p>
-        <p>${estrellas}</p>
+        <div>${estrellas}</div>
         <small>${c.dateTime || c.date || ""}</small>
       `;
 
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Crear estrellas
-    const estrellas = "★".repeat(puntuacion) + "☆".repeat(5 - puntuacion);
+    const estrellas = getStars(Number(puntuacion));
 
     const nombreUsuario = localStorage.getItem("usuario") || "Usuario_anónimo";
 
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="border rounded p-3">
         <strong>${nombreUsuario}</strong>
         <p>${comentario}</p>
-        <p>${estrellas}</p>
+        <div>${estrellas}</div>
         <small>${fecha}</small>
       </div>
     `;
@@ -156,3 +156,18 @@ document.addEventListener("DOMContentLoaded", () => {
     selectPuntuacion.value = "1";
   });
 });
+
+function getStars(vote) {
+  const rating = Math.round(vote);
+  let stars = "";
+  for (let i = 0; i < 5; i++) {
+    // Aquí puedes agregar la lógica para las estrellas vacías
+    stars += '<span class="fa fa-star';
+    if (i < rating) {
+      stars += ' checked text-warning"></span>';
+    } else {
+      stars += '"></span>';
+    }
+  }
+  return stars;
+}
