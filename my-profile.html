@@ -11,9 +11,14 @@
       href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
       rel="stylesheet"
     />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/products.css" rel="stylesheet" />
+    <script src="js/products.js" defer></script>
     <script src="js/autorizacion.js" defer></script>
+    <script src="js/productsBoton.js" defer></script>
+    <script src="js/productsFiltros.js" defer></script>
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -33,42 +38,9 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-      <div class="container">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav w-100 justify-content-between">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="categories.html">Categorías</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="sell.html">Vender</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">Ingresar</a>
-            </li>
-            <!-- Información del usuario -->
-            <li class="nav-item d-flex align-items-center">
-              <img id="user-avatar" src="" alt="Icono del usuario" />
-              <p id="p-user-name"><span id="username">Invitado</span></p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <!-- BARRA DE NAVEGACION-->
+    <div id="navbar"></div>
+    <!-- BARRA DE NAVEGACION-->
     <main>
       <div class="container">
         <div class="alert alert-danger text-center" role="alert">

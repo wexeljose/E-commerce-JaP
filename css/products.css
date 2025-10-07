@@ -1,7 +1,9 @@
 /* Resolución estándar */
+
 .card {
   width: 17rem;
   margin: 1rem;
+  cursor: pointer;
 }
 
 .card p {
