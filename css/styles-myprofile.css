@@ -25,8 +25,8 @@ main {
   display: flex;
   gap: 40px;
   padding: 40px;
-  max-width: 800px;
-  width: 90%;
+  max-width: 70%;
+  width: 100%;
 }
 
 /* --- Sección del Avatar (Izquierda) --- */
@@ -42,7 +42,7 @@ main {
 .avatar-circle {
   background-color: #4a90e2; /* Color de fondo azul */
   width: 100%;
-  height: 100%;
+  height: auto;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -51,7 +51,7 @@ main {
 }
 
 .avatar-image {
-  width: 120px; /* Ajusta el tamaño de tu imagen */
+  width: 100%; /* Ajusta el tamaño de tu imagen */
   height: auto;
 }
 
@@ -118,4 +118,27 @@ input::placeholder {
 
 .btn-secondary:hover {
   background-color: #0b5ed7;
+}
+
+#avatar-upload {
+  display: none; /* Ocultamos el input nativo */
+}
+
+.custom-upload {
+  background-color: #0d6efd;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  text-align: center;
+}
+
+.custom-upload:hover {
+  background-color: #0b5ed7;
+}
+
+.custom-upload:active {
+  transform: scale(0.97);
 }
