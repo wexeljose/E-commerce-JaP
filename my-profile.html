@@ -11,14 +11,10 @@
       href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
       rel="stylesheet"
     />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/products.css" rel="stylesheet" />
-    <script src="js/products.js" defer></script>
+    <link href="css/styles-myprofile.css" rel="stylesheet" />
     <script src="js/autorizacion.js" defer></script>
-    <script src="js/productsBoton.js" defer></script>
-    <script src="js/productsFiltros.js" defer></script>
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -38,13 +34,66 @@
   </head>
 
   <body>
-    <!-- BARRA DE NAVEGACION-->
-    <div id="navbar"></div>
-    <!-- BARRA DE NAVEGACION-->
-    <main>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
       <div class="container">
-        <div class="alert alert-danger text-center" role="alert">
-          <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100 justify-content-between">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="categories.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sell.html">Vender</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Ingresar</a>
+            </li>
+            <!-- Información del usuario -->
+            <li class="nav-item d-flex align-items-center">
+              <img id="user-avatar" src="" alt="Icono del usuario" />
+              <p id="p-user-name"><span id="username">Invitado</span></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="profile-card">
+        <div class="avatar-section">
+          <div class="avatar-circle">
+            <img
+              src=""
+              alt="Avatar de perro guía"
+              class="avatar-image"
+              id="avatar"
+            />
+          </div>
+          <button class="btn btn-secondary">Cambiar avatar</button>
+        </div>
+
+        <div class="form-section">
+          <form>
+            <input type="text" placeholder="Nombre" />
+            <input type="text" placeholder="Apellido" />
+            <input type="email" placeholder="Email" />
+            <input type="tel" placeholder="Teléfono" />
+            <div class="button-wrapper">
+              <button type="submit" class="btn btn-primary">Modificar</button>
+            </div>
+          </form>
         </div>
       </div>
     </main>
