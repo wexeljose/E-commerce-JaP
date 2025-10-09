@@ -1,313 +1,283 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>eMercado - Todo lo que busques está aquí</title>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
-      rel="stylesheet"
-    />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/products.css" rel="stylesheet" />
-    <script src="js/products.js" defer></script>
-    <script src="js/autorizacion.js" defer></script>
-    <script src="js/productsBoton.js" defer></script>
-    <script src="js/productsFiltros.js" defer></script>
-  </head>
+  <title>eMercado - Todo lo que busques está aquí</title>
 
-  <body>
-    <!-- BARRA DE NAVEGACION-->
-    <div id="navbar"></div>
-    <!-- BARRA DE NAVEGACION-->
-    <!-- Contenedor principal -->
-    <main class="py-5">
-      <div class="row mx-4">
-        <!-- Logo en mobile -->
-        <div class="text-center mb-4 d-none" id="logoMobile">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+  <link href="css/products.css" rel="stylesheet" />
+  <script src="js/products.js" defer></script>
+  <script src="js/autorizacion.js" defer></script>
+  <script src="js/productsBoton.js" defer></script>
+  <script src="js/productsFiltros.js" defer></script>
+</head>
+
+<body>
+  <!-- BARRA DE NAVEGACION-->
+  <!-- BARRA DE NAVEGACION-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <!-- Botón de búsqueda navbar -->
+        <button title="botonBuscador" class="btn btn-outline-light nav-search-btn" type="button" id="searchButton"
+          hidden>
+          <i class="fas fa-search"></i>
+        </button>
+        <div id="searchBox" class="input-group search-bar d-none">
+          <input type="search" class="form-control" placeholder="Busca en Grupo 307..."> <!-- pancho -->
+          <button title="botonBuscadorNav" class="btn btn-outline-secondary" type="button" id="closeSearchBtn">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <!-- Icono de lupa de Font Awesome -->
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+
+          <!-- Menú desplegable del usuario -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
+              data-bs-toggle="dropdown" style="cursor: pointer">
+              <img id="user-avatar" src="" alt="Usuario" style="
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                  " />
+              <span id="username">Invitado</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="cart.html">Mi Carrito</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" id="logout-btn">Cerrar Sesión</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      </li>
+    </div>
+  </nav>
+  <!-- BARRA DE NAVEGACION-->
+  <!-- Contenedor principal -->
+  <main class="py-5">
+    <div class="row mx-4">
+      <!-- Logo en mobile -->
+      <div class="text-center mb-4 d-none" id="logoMobile">
+        <a href="index.html">
+          <img src="img/logoJaP.jpg" alt="eMercado Logo" class="img-fluid" />
+        </a>
+      </div>
+      <aside class="col-sm-3 col-lg-2 mb-4">
+        <!-- Primera columna: logo y barra lateral-->
+
+        <!-- Logo -->
+        <div class="text-center mb-4">
           <a href="index.html">
             <img src="img/logoJaP.jpg" alt="eMercado Logo" class="img-fluid" />
           </a>
         </div>
-        <aside class="col-sm-3 col-lg-2 mb-4">
-          <!-- Primera columna: logo y barra lateral-->
 
-          <!-- Logo -->
-          <div class="text-center mb-4">
-            <a href="index.html">
-              <img
-                src="img/logoJaP.jpg"
-                alt="eMercado Logo"
-                class="img-fluid"
-              />
-            </a>
+        <!-- Barra lateral con filtros -->
+        <div id="primerBuscador" class="p-3 border rounded">
+          <!-- Keywords -->
+          <h5>Keywords</h5>
+          <div class="mb-3">
+            <span class="badge bg-primary me-1" style="cursor: pointer">Spring <i class="bi bi-x">&times;</i></span>
+            <span class="badge bg-primary me-1" style="cursor: pointer">Smart <i class="bi bi-x">&times;</i></span>
+            <span class="badge bg-primary me-1" style="cursor: pointer">Modern <i class="bi bi-x">&times;</i></span>
           </div>
 
-          <!-- Barra lateral con filtros -->
-          <div id="primerBuscador" class="p-3 border rounded">
-            <!-- Keywords -->
-            <h5>Keywords</h5>
-            <div class="mb-3">
-              <span class="badge bg-primary me-1" style="cursor: pointer"
-                >Spring <i class="bi bi-x">&times;</i></span
-              >
-              <span class="badge bg-primary me-1" style="cursor: pointer"
-                >Smart <i class="bi bi-x">&times;</i></span
-              >
-              <span class="badge bg-primary me-1" style="cursor: pointer"
-                >Modern <i class="bi bi-x">&times;</i></span
-              >
-            </div>
+          <!-- Filtros -->
+          <div class="mb-3">
+            <ul class="list-unstyled">
+              <li>
+                <input class="form-check-input me-2" type="checkbox" id="opt1" />
+                <label for="opt1">Opcion<br /><small class="text-muted">Description</small></label>
+              </li>
+              <li>
+                <input class="form-check-input me-2" type="checkbox" id="opt2" />
+                <label for="opt2">Opcion<br /><small class="text-muted">Description</small></label>
+              </li>
+              <li>
+                <input class="form-check-input me-2" type="checkbox" id="opt3" />
+                <label for="opt3">Opcion<br /><small class="text-muted">Description</small></label>
+              </li>
+            </ul>
+          </div>
 
-            <!-- Filtros -->
-            <div class="mb-3">
-              <ul class="list-unstyled">
-                <li>
-                  <input
-                    class="form-check-input me-2"
-                    type="checkbox"
-                    id="opt1"
-                  />
-                  <label for="opt1"
-                    >Opcion<br /><small class="text-muted"
-                      >Description</small
-                    ></label
-                  >
-                </li>
-                <li>
-                  <input
-                    class="form-check-input me-2"
-                    type="checkbox"
-                    id="opt2"
-                  />
-                  <label for="opt2"
-                    >Opcion<br /><small class="text-muted"
-                      >Description</small
-                    ></label
-                  >
-                </li>
-                <li>
-                  <input
-                    class="form-check-input me-2"
-                    type="checkbox"
-                    id="opt3"
-                  />
-                  <label for="opt3"
-                    >Opcion<br /><small class="text-muted"
-                      >Description</small
-                    ></label
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label" for="sliderPrecio">Precio</label>
-              <div class="d-flex">
-                <input
-                  id="inputPriceMin"
-                  type="number"
-                  class="form-control me-2"
-                  placeholder="Min"
-                  min="0"
-                />
-                <input
-                  id="inputPriceMax"
-                  type="number"
-                  class="form-control"
-                  placeholder="Max"
-                  min="0"
-                />
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Color</label>
-              <ul class="list-unstyled">
-                <li>
-                  <input
-                    class="form-check-input me-2"
-                    type="checkbox"
-                    id="col1"
-                  />
-                  <label for="col1">Rojo</label>
-                </li>
-                <li>
-                  <input
-                    class="form-check-input me-2"
-                    type="checkbox"
-                    id="col2"
-                  />
-                  <label for="col2">Azul</label>
-                </li>
-                <li>
-                  <input
-                    class="form-check-input me-2"
-                    type="checkbox"
-                    id="col3"
-                  />
-                  <label for="col3">Verde</label>
-                </li>
-              </ul>
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Tamaño</label>
-              <ul class="list-unstyled">
-                <li>
-                  <input
-                    class="form-check-input me-2"
-                    type="checkbox"
-                    id="tamaño1"
-                  />
-                  <label for="tamaño1">Pequeño</label>
-                </li>
-                <li>
-                  <input
-                    class="form-check-input me-2"
-                    type="checkbox"
-                    id="tamaño2"
-                  />
-                  <label for="tamaño2">Mediano</label>
-                </li>
-                <li>
-                  <input
-                    class="form-check-input me-2"
-                    type="checkbox"
-                    id="tamaño3"
-                  />
-                  <label for="tamaño3">Grande</label>
-                </li>
-              </ul>
+          <div class="mb-3">
+            <label class="form-label" for="sliderPrecio">Precio</label>
+            <div class="d-flex">
+              <input id="inputPriceMin" type="number" class="form-control me-2" placeholder="Min" min="0" />
+              <input id="inputPriceMax" type="number" class="form-control" placeholder="Max" min="0" />
             </div>
           </div>
-        </aside>
-        <!-- Boton de Filtros dinamico -->
-        <div
-          id="buscadorDinamico"
-          class="buscador flex justify-end mb-4 dynamic-search-visible"
-        >
-          <div id="filterGroup" class="filter-group">
-            <button
-              id="filterButton"
-              class="main-filter-button filter-text-color"
-            >
-              Filtros
-              <i class="fas fa-filter ml-2"></i>
+
+          <div class="mb-3">
+            <label class="form-label">Color</label>
+            <ul class="list-unstyled">
+              <li>
+                <input class="form-check-input me-2" type="checkbox" id="col1" />
+                <label for="col1">Rojo</label>
+              </li>
+              <li>
+                <input class="form-check-input me-2" type="checkbox" id="col2" />
+                <label for="col2">Azul</label>
+              </li>
+              <li>
+                <input class="form-check-input me-2" type="checkbox" id="col3" />
+                <label for="col3">Verde</label>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Tamaño</label>
+            <ul class="list-unstyled">
+              <li>
+                <input class="form-check-input me-2" type="checkbox" id="tamaño1" />
+                <label for="tamaño1">Pequeño</label>
+              </li>
+              <li>
+                <input class="form-check-input me-2" type="checkbox" id="tamaño2" />
+                <label for="tamaño2">Mediano</label>
+              </li>
+              <li>
+                <input class="form-check-input me-2" type="checkbox" id="tamaño3" />
+                <label for="tamaño3">Grande</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+      <!-- Boton de Filtros dinamico -->
+      <div id="buscadorDinamico" class="buscador flex justify-end mb-4 dynamic-search-visible">
+        <div id="filterGroup" class="filter-group">
+          <button id="filterButton" class="main-filter-button filter-text-color">
+            Filtros
+            <i class="fas fa-filter ml-2"></i>
+          </button>
+
+          <div id="filterOptions" class="options-container hidden">
+            <button class="option-button" id="btnFilterRelevantMobile">
+              Más Vendidos
             </button>
-
-            <div id="filterOptions" class="options-container hidden">
-              <button class="option-button" id="btnFilterRelevantMobile">
-                Más Vendidos
-              </button>
-              <button class="option-button" id="btnFilterPriceDescMobile">
-                Precio <i class="fas fa-chevron-down ml-1"></i>
-              </button>
-              <button class="option-button" id="btnFilterPriceAscMobile">
-                Precio <i class="fas fa-chevron-up ml-1"></i>
-              </button>
-              <div>
-                <!-- Maximo y Minimo en Celular -->
-                <input
-                  id="inputPriceMinMobile"
-                  type="number"
-                  class="form-control"
-                  placeholder="Min"
-                />
-                <input
-                  id="inputPriceMaxMobile"
-                  type="number"
-                  class="form-control"
-                  placeholder="Max"
-                />
-              </div>
+            <button class="option-button" id="btnFilterPriceDescMobile">
+              Precio <i class="fas fa-chevron-down ml-1"></i>
+            </button>
+            <button class="option-button" id="btnFilterPriceAscMobile">
+              Precio <i class="fas fa-chevron-up ml-1"></i>
+            </button>
+            <div>
+              <!-- Maximo y Minimo en Celular -->
+              <input id="inputPriceMinMobile" type="number" class="form-control" placeholder="Min" />
+              <input id="inputPriceMaxMobile" type="number" class="form-control" placeholder="Max" />
             </div>
           </div>
         </div>
+      </div>
 
-        <main class="col-sm-9 col-lg-10">
-          <!-- Segunda columna: busquedad y contenido principal-->
-          <div id="segundoBuscador" class="buscador">
-            <form>
-              <div class="input-wrapper">
-                <input
-                  type="search"
-                  placeholder="Buscar"
-                  class="search-input"
-                />
-                <button type="submit" class="search-btn">🔍</button>
-              </div>
-
-              <button type="button" id="btnFilterNew" class="filter-btn active">
-                ✔ Nuevo
-              </button>
-              <button type="button" id="btnFilterPriceAsc" class="filter-btn">
-                Precio ascendente
-              </button>
-              <button type="button" id="btnFilterPriceDesc" class="filter-btn">
-                Precio descendente
-              </button>
-              <button type="button" id="btnFilterRelevant" class="filter-btn">
-                Más Vendidos
-              </button>
-            </form>
-          </div>
-          <div>
-            <div class="row div-body">
-              <!-- Aquí se mostrarán las tarjetas de productos -->
-              <div class="row" id="product-list"></div>
-              <!-- Botones de navegación -->
-              <nav aria-label="Navegacion" class="navegacion-pagina">
-                <ul class="pagination justify-content-center mx-2">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">&larr;</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
-
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#">&rarr;</a>
-                  </li>
-                </ul>
-              </nav>
+      <main class="col-sm-9 col-lg-10">
+        <!-- Segunda columna: busquedad y contenido principal-->
+        <div id="segundoBuscador" class="buscador">
+          <form>
+            <div class="input-wrapper">
+              <input type="search" placeholder="Buscar" class="search-input" />
+              <button type="submit" class="search-btn">🔍</button>
             </div>
+
+            <button type="button" id="btnFilterNew" class="filter-btn active">
+              ✔ Nuevo
+            </button>
+            <button type="button" id="btnFilterPriceAsc" class="filter-btn">
+              Precio ascendente
+            </button>
+            <button type="button" id="btnFilterPriceDesc" class="filter-btn">
+              Precio descendente
+            </button>
+            <button type="button" id="btnFilterRelevant" class="filter-btn">
+              Más Vendidos
+            </button>
+          </form>
+        </div>
+        <div>
+          <div class="row div-body">
+            <!-- Aquí se mostrarán las tarjetas de productos -->
+            <div class="row" id="product-list"></div>
+            <!-- Botones de navegación -->
+            <nav aria-label="Navegacion" class="navegacion-pagina">
+              <ul class="pagination justify-content-center mx-2">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1">&larr;</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+
+                <li class="page-item disabled">
+                  <a class="page-link" href="#">&rarr;</a>
+                </li>
+              </ul>
+            </nav>
           </div>
-        </main>
-      </div>
-    </main>
-    <!-- Contenedor principal -->
-
-    <!-- Footer -->
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-end">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>
-          Este sitio forma parte de
-          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
-            >Jovenes a Programar</a>
-        </p>
-      </div>
-    </footer>
-    <!-- Footer -->
-
-    <!-- Rueda de carga -->
-    <div id="spinner-wrapper">
-      <div class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+        </div>
+      </main>
     </div>
-    <!-- Rueda de carga -->
+  </main>
+  <!-- Contenedor principal -->
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/init.js"></script>
-  </body>
+  <!-- Footer -->
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>
+        Este sitio forma parte de
+        <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
+    </div>
+  </footer>
+  <!-- Footer -->
+
+  <!-- Rueda de carga -->
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <!-- Rueda de carga -->
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+</body>
+
 </html>

@@ -8,8 +8,6 @@ function moverAIndex() {
 
 function cerrarSesion() {
   localStorage.removeItem("usuario");
-  // Si guardas más cosas en localStorage, límpialas también:
-  // localStorage.clear(); // Esto borra TODO
   moverALogin();
 }
 
@@ -21,49 +19,89 @@ function revisarLogin() {
   }
 }
 
+/**
+ * 🔹 Muestra el nombre y avatar del usuario en cualquier parte del sitio.
+ */
+function mostrarDatosUsuarioGlobal() {
+  const usuario = localStorage.getItem("usuario");
+  if (!usuario) return;
+
+  const encodedName = encodeURIComponent(usuario);
+  const apiUrl = `https://ui-avatars.com/api/?name=${encodedName}&background=random&size=35`;
+
+  const spans = document.querySelectorAll("#username, .username, [data-username]");
+  spans.forEach((el) => (el.textContent = usuario));
+
+  const avatars = document.querySelectorAll("#user-avatar, .user-avatar, [data-user-avatar]");
+  avatars.forEach((el) => {
+    if (el.tagName === "IMG") el.src = apiUrl;
+    else el.style.backgroundImage = `url('${apiUrl}')`;
+  });
+
+  const logoutBtns = document.querySelectorAll("#logout-btn, .logout-btn, [data-logout-btn]");
+  logoutBtns.forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (confirm("¿Estás seguro que deseas cerrar sesión?")) {
+        cerrarSesion();
+      }
+    });
+  });
+}
+
+/**
+ * 🔹 Actualiza los datos del navbar (se ejecuta luego de cargar navbar.html).
+ */
 function actualizarNavbar() {
   const usuario = localStorage.getItem("usuario");
   if (usuario != null) {
-    console.log("Usuario encontrado");
-    const userName = usuario;
-
-    const userAvatar = document.getElementById("user-avatar");
-    const usernameSpan = document.getElementById("username");
-
-    if (userAvatar && usernameSpan) {
-      usernameSpan.textContent = userName;
-
-      const encodedName = encodeURIComponent(userName);
-      const apiUrl = `https://ui-avatars.com/api/?name=${encodedName}&background=random&size=35`;
-
-      userAvatar.src = apiUrl;
-
-      // AQUÍ conectamos el botón de cerrar sesión
-      const logoutBtn = document.getElementById("logout-btn");
-      if (logoutBtn) {
-        logoutBtn.addEventListener("click", function (e) {
-          e.preventDefault(); // Evita que el enlace haga su acción por defecto
-          if (confirm("¿Estás seguro que deseas cerrar sesión?")) {
-            cerrarSesion();
-          }
-        });
-      }
-    } else {
-      console.warn("Navbar aún no está cargado en el DOM");
-    }
+    console.log("Usuario encontrado:", usuario);
+    mostrarDatosUsuarioGlobal();
+  } else {
+    console.warn("No se encontró usuario en el almacenamiento local.");
   }
 }
 
-// Llamamos primero a la validación de login
+/**
+ * 🔹 Re-inicializa los componentes de Bootstrap cuando el navbar se carga dinámicamente.
+ */
+function reinicializarBootstrapNavbar() {
+  // Solo se ejecuta si Bootstrap está disponible
+  if (typeof bootstrap !== "undefined") {
+    const toggler = document.querySelector(".navbar-toggler");
+    if (toggler) {
+      // Reasigna el comportamiento de colapsar
+      toggler.addEventListener("click", function () {
+        const targetSelector = toggler.getAttribute("data-bs-target");
+        const target = document.querySelector(targetSelector);
+        if (target) {
+          target.classList.toggle("show");
+        }
+      });
+    }
+  } else {
+    console.warn("Bootstrap no está cargado o no disponible.");
+  }
+}
+
+// --- Flujo principal ---
+
 revisarLogin();
 
-// Cuando la página termine de cargar, intentamos actualizar el navbar
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("navbar.html")
-    .then((res) => res.text())
-    .then((data) => {
-      document.getElementById("navbar").innerHTML = data;
-      // Ahora que el nav existe en el DOM, actualizamos el usuario
-      actualizarNavbar();
-    });
+  const navbarContainer = document.getElementById("navbar");
+  if (navbarContainer) {
+    fetch("navbar.html")
+      .then((res) => res.text())
+      .then((data) => {
+        navbarContainer.innerHTML = data;
+
+        // 🔹 Re-inicializamos el navbar y usuario una vez cargado
+        reinicializarBootstrapNavbar();
+        actualizarNavbar();
+      })
+      .catch((err) => console.error("Error al cargar navbar:", err));
+  } else {
+    mostrarDatosUsuarioGlobal();
+  }
 });
