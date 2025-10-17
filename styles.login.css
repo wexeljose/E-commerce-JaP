@@ -1,0 +1,46 @@
+
+
+@media (max-width: 1366px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+
+  .contenedorForm {
+    width: 90%;
+  }
+  .contenedorCampos {
+    width: 80%;
+  }
+}
+
+@media (max-width: 320px) {
+  html {
+    font-size: 12px;
+  }
+
+  header img {
+    width: 100%;
+  }
+
+  #botonLogin {
+    max-width: 100%;
+  }
+
+  .contenedorForm {
+    width: 100%;
+    border-radius: 0px;
+  }
+  .contenedorCampos {
+    width: 80%;
+  }
+}
+
+#mainLogin {
+  min-height: calc(100vh - 210px - 100px);
+}
