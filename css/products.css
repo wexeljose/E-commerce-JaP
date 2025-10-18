@@ -1,3 +1,36 @@
+/* Boton cambio de Tema */
+.dark-mode{
+  background-color: #333333;
+  color: #ffffff;
+}
+
+/* Botón: Tema Claro */
+#modeToggle {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.4s, color 0.4s;
+
+  /* Colores para el tema CLARO */
+  background-color: #f0f0f0;
+  color: #1a1a1a;
+}
+
+/* Cuerpo: Tema Oscuro */
+.dark-mode {
+  background-color: #000000; 
+  color: #eeeeee;            
+}
+
+
+.dark-mode #modeToggle {
+  /* Colores para el tema OSCURO */
+  background-color: #1a1a1a;
+  color: #eeeeee;          
+}
+
 /* Resolución estándar */
 
 .card {
