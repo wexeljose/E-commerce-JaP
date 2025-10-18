@@ -39,3 +39,26 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    // El div que pusimos en el HTML para el botón
+    const temaContainer = document.getElementById("tema-container"); 
+
+    if (temaContainer) {
+        // Usa Fetch API para obtener el contenido de tema.html
+        fetch("tema.html")
+            .then(response => response.text())
+            .then(html => {
+                temaContainer.innerHTML = html;
+                
+                // *** Paso crucial: Inicializar la funcionalidad ***
+                // Llama a la función definida en botonTema.js para activar el evento 'click'
+                if (typeof inicializarBotonTema === 'function') {
+                    inicializarBotonTema();
+                }
+            })
+            .catch(error => {
+                console.error("Error al cargar el botón de tema:", error);
+            });
+    }
+});

@@ -105,3 +105,4 @@ document.addEventListener("DOMContentLoaded", function () {
     mostrarDatosUsuarioGlobal();
   }
 });
+
