@@ -171,3 +171,19 @@ function getStars(vote) {
   }
   return stars;
 }
+
+// Boton comprar
+const btnComprar = document.getElementById("btn-comprar");
+btnComprar.addEventListener("click", () => {
+  if (!localStorage.getItem("carrito")) {
+    localStorage.setItem(
+      "carrito",
+      JSON.stringify([localStorage.getItem("productID")])
+    );
+  } else {
+    const carrito = JSON.parse(localStorage.getItem("carrito"));
+    carrito.push(localStorage.getItem("productID"));
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  }
+  window.location.href = "cart.html";
+});
