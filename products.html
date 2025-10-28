@@ -17,9 +17,9 @@
   <script src="js/products.js" defer></script>
   <script src="js/productsBoton.js" defer></script>
   <script src="js/productsFiltros.js" defer></script>
-  <script src="js/index.js" defer></script> 
   <script src="js/init.js" defer></script> 
   <script src="js/botonTema.js" defer></script> 
+  <script src="js/cart.js" defer></script>
 </head>
 
 <body>
@@ -71,8 +71,11 @@
               <li>
                 <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
               </li>
-              <li>
-                <a class="dropdown-item" href="cart.html">Mi Carrito</a>
+                <li>
+                <a class="dropdown-item d-flex justify-content-between align-items-center" href="cart.html">
+                  Mi Carrito
+                  <span id="carrito-badge" class="badge bg-danger ms-2">0</span>
+                </a>
               </li>
               <li>
                 <hr class="dropdown-divider" />
@@ -283,5 +286,17 @@
       </div>
     
 </body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof actualizarBadgeCarrito === 'function') {
+      actualizarBadgeCarrito();
+    }
+    if (typeof inicializarAvatarNavbar === 'function') {
+      inicializarAvatarNavbar();
+    }
+  });
+
+
+</script>
 
 </html>

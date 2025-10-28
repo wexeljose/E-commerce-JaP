@@ -19,24 +19,22 @@ function revisarLogin() {
   }
 }
 
-/**
- * 🔹 Muestra el nombre y avatar del usuario en cualquier parte del sitio.
- */
+
 function mostrarDatosUsuarioGlobal() {
   const usuario = localStorage.getItem("usuario");
   if (!usuario) return;
 
   const encodedName = encodeURIComponent(usuario);
-  const apiUrl = `https://ui-avatars.com/api/?name=${encodedName}&background=random&size=35`;
+  //const apiUrl = `https://ui-avatars.com/api/?name=${encodedName}&background=random&size=35`;
 
   const spans = document.querySelectorAll("#username, .username, [data-username]");
   spans.forEach((el) => (el.textContent = usuario));
 
-  const avatars = document.querySelectorAll("#user-avatar, .user-avatar, [data-user-avatar]");
-  avatars.forEach((el) => {
-    if (el.tagName === "IMG") el.src = apiUrl;
-    else el.style.backgroundImage = `url('${apiUrl}')`;
-  });
+  //const avatars = document.querySelectorAll("#user-avatar, .user-avatar, [data-user-avatar]");
+  //avatars.forEach((el) => {
+  //  if (el.tagName === "IMG") el.src = apiUrl;
+  //  else el.style.backgroundImage = `url('${apiUrl}')`;
+  //});
 
   const logoutBtns = document.querySelectorAll("#logout-btn, .logout-btn, [data-logout-btn]");
   logoutBtns.forEach((btn) => {
@@ -49,22 +47,21 @@ function mostrarDatosUsuarioGlobal() {
   });
 }
 
-/**
- * 🔹 Actualiza los datos del navbar (se ejecuta luego de cargar navbar.html).
- */
+
 function actualizarNavbar() {
   const usuario = localStorage.getItem("usuario");
   if (usuario != null) {
     console.log("Usuario encontrado:", usuario);
+    inicializarAvatarNavbar();
+
     mostrarDatosUsuarioGlobal();
   } else {
     console.warn("No se encontró usuario en el almacenamiento local.");
   }
+
 }
 
-/**
- * 🔹 Re-inicializa los componentes de Bootstrap cuando el navbar se carga dinámicamente.
- */
+
 function reinicializarBootstrapNavbar() {
   // Solo se ejecuta si Bootstrap está disponible
   if (typeof bootstrap !== "undefined") {
@@ -84,6 +81,19 @@ function reinicializarBootstrapNavbar() {
   }
 }
 
+
+function actualizarBadgeCarrito() {
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const cantidadItems = carrito.length;
+  const badge = document.getElementById("carrito-badge");
+
+  if (badge) {
+    badge.textContent = cantidadItems;
+  } else {
+    console.warn("⚠️ No se encontró el badge con id carrito-badge");
+  }
+}
+
 // --- Flujo principal ---
 
 revisarLogin();
@@ -96,13 +106,37 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         navbarContainer.innerHTML = data;
 
-        // 🔹 Re-inicializamos el navbar y usuario una vez cargado
+        // Re-inicializamos el navbar y usuario una vez cargado
         reinicializarBootstrapNavbar();
         actualizarNavbar();
+
+        // Actualizamos el badge del carrito
+        if (typeof actualizarBadgeCarrito === "function") {
+          actualizarBadgeCarrito();
+        } else {
+          console.warn("⚠️ actualizarBadgeCarrito no está definida.");
+        }
       })
       .catch((err) => console.error("Error al cargar navbar:", err));
   } else {
     mostrarDatosUsuarioGlobal();
   }
+
 });
 
+function inicializarAvatarNavbar() {
+  const avatar = localStorage.getItem("avatar");
+  const usuario = localStorage.getItem("usuario") || "Usuario";
+
+  const avatarElement = document.getElementById("user-avatar");
+  console.log("Funciona por favor")
+  if (avatar) {
+    console.log("Estoy en el base 64");
+    avatarElement.src = avatar;
+  } else {
+    avatarElement.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+      usuario
+    )}&background=random&size=35`;
+    console.log("Imagen con inicial");
+  }
+}
