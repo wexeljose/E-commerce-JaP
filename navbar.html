@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
   <link href="css/font-awesome.min.css" rel="stylesheet" />
   <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -13,9 +12,10 @@
   <script src="js/autorizacion.js" defer></script>
   <script src="js/productsBoton.js" defer></script>
   <script src="js/productsFiltros.js" defer></script>
-  <scrip src="js/cart.js" defer>
-    </script>
+  <script src="js/cart.js" defer></script>
 </head>
+
+<!-- ... el resto del <head> como ya lo tenés ... -->
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
@@ -39,14 +39,16 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
               data-bs-toggle="dropdown" style="cursor: pointer">
-              <img id="user-avatar" src="" alt="Usuario" style="
-                    width: 35px;
-                    height: 35px;
-                    border-radius: 50%;
-                    margin-right: 10px;
-                  " />
+
+              <!-- Avatar con badge de notificación -->
+              <div id="avatar-container" class="position-relative me-2">
+                <img id="user-avatar" src="" alt="Usuario" style="width: 35px; height: 35px; border-radius: 50%;" />
+                <span id="badge-notificacion" class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
+              </div>
+
               <span id="username">Invitado</span>
             </a>
+
             <ul class="dropdown-menu dropdown-menu-end">
               <li>
                 <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
@@ -54,13 +56,10 @@
               <li>
                 <a class="dropdown-item d-flex justify-content-between align-items-center" href="cart.html">
                   Mi Carrito
-                  <span id="carrito-badge" class="badge bg-danger ms-2">0</span>
+                  <span id="badge-carrito-dropdown" class="badge bg-danger ms-2">0</span>
                 </a>
               </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
+              <li><hr class="dropdown-divider" /></li>
               <li>
                 <a class="dropdown-item" href="#" id="logout-btn">Cerrar Sesión</a>
               </li>
@@ -70,6 +69,10 @@
       </div>
     </div>
   </nav>
-</body>
 
+  <!-- Script para ocultar el badge del avatar -->
+  <script>
+  
+  </script>
+</body>
 </html>
