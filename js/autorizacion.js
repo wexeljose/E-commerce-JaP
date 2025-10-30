@@ -65,22 +65,9 @@ function reinicializarBootstrapNavbar() {
   } else {
     console.warn("Bootstrap no está cargado o no disponible.");
   }
+
 }
 
-function actualizarBadgeCarrito() {
-   console.log("antes de todo");
-  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  const cantidadItems = carrito.length;
-  const badge = document.getElementById("carrito-badge");
- console.log("antes if");
-  if (badge) {
-    console.log("cantidad de items " + cantidadItems);
-    badge.textContent = cantidadItems;
-  } else {
-    console.warn("⚠️ No se encontró el badge con id carrito-badge");
-        console.log("else");
-  }
-}
 
 function inicializarAvatarNavbar() {
   const avatar = localStorage.getItem("avatar");
@@ -96,6 +83,7 @@ function inicializarAvatarNavbar() {
       )}&background=random&size=35`;
     }
   }
+
 }
 
 revisarLogin();
@@ -126,20 +114,3 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function ocultarBadge() {
-  const avatar = document.getElementById("userDropdown");
-  const badgeNoti = document.getElementById("badge-notificacion");
-  const dropdownToggle = document.querySelector('[data-bs-toggle="dropdown"]');
-
-  if (avatar && badgeNoti) {
-    avatar.addEventListener("click", () => {
-      badgeNoti.classList.add("d-none");
-    });
-  }
-
-  if (dropdownToggle && badgeNoti) {
-    dropdownToggle.addEventListener("hide.bs.dropdown", () => {
-      badgeNoti.classList.remove("d-none");
-    });
-  }
-}
