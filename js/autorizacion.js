@@ -98,6 +98,8 @@ function inicializarAvatarNavbar() {
   }
 }
 
+revisarLogin();
+
 document.addEventListener("DOMContentLoaded", function () {
   const navbarContainer = document.getElementById("navbar");
   if (navbarContainer) {

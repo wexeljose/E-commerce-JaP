@@ -86,7 +86,7 @@ input[type=number] {
 }
 
 a {
-    color: #000000 !important;
+    color: #000000;
 }
 
 span {
@@ -158,7 +158,10 @@ hr {
     height: 100% !important;
 }
 
-
+.nombreProd {
+    cursor: pointer;
+    text-decoration: underline;
+}
 
 @media (max-width: 645px) {
     #containerCarrito {
