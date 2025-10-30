@@ -124,12 +124,13 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.eliminar').forEach(btn => {
       btn.addEventListener('click', function () {
         const id = btn.parentElement.querySelector("input").value;
-        productosIds = productosIds.filter(item => item !== id);
+        const carrito = JSON.parse(localStorage.getItem("carrito"));
+        carrito = carrito.filter(item => item !== id);
 
         btn.parentElement.parentElement.remove();
-        localStorage.setItem("carrito", JSON.stringify(productosIds));
+        localStorage.setItem("carrito", JSON.stringify(carrito));
         actualizarTotales();
-        if (productosIds.length === 0) {
+        if (carrito.length === 0) {
           document.getElementById("totalPago").textContent = "$0";
           document.getElementById("subtotalPago").textContent = "$0";
           document.getElementById("cantProds").textContent = "Tus productos: 0";
