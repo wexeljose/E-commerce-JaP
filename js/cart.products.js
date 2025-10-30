@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         input.value = parseInt(input.value) + 1;
 
         const prodid = btn.parentElement.querySelector("input").dataset.id;
-        const carrito = JSON.parse(localStorage.getItem("carrito"));
+        let carrito = JSON.parse(localStorage.getItem("carrito"));
         carrito.push(prodid);
         localStorage.setItem("carrito", JSON.stringify(carrito));
 
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
         input.value = nuevaCantidad;
 
         const prodid = btn.parentElement.querySelector("input").dataset.id;
-        const carrito = JSON.parse(localStorage.getItem("carrito"));
+        let carrito = JSON.parse(localStorage.getItem("carrito"));
         const index = carrito.indexOf(prodid);
         if (index > -1) {
             carrito.splice(index, 1);
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.eliminar').forEach(btn => {
       btn.addEventListener('click', function () {
         const id = btn.parentElement.querySelector("input").value;
-        const carrito = JSON.parse(localStorage.getItem("carrito"));
+        let carrito = JSON.parse(localStorage.getItem("carrito"));
         carrito = carrito.filter(item => item !== id);
 
         btn.parentElement.parentElement.remove();
