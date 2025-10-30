@@ -19,24 +19,14 @@ function revisarLogin() {
   }
 }
 
-/**
- * 🔹 Muestra el nombre y avatar del usuario en cualquier parte del sitio.
- */
 function mostrarDatosUsuarioGlobal() {
   const usuario = localStorage.getItem("usuario");
   if (!usuario) return;
 
   const encodedName = encodeURIComponent(usuario);
-  const apiUrl = `https://ui-avatars.com/api/?name=${encodedName}&background=random&size=35`;
 
   const spans = document.querySelectorAll("#username, .username, [data-username]");
   spans.forEach((el) => (el.textContent = usuario));
-
-  const avatars = document.querySelectorAll("#user-avatar, .user-avatar, [data-user-avatar]");
-  avatars.forEach((el) => {
-    if (el.tagName === "IMG") el.src = apiUrl;
-    else el.style.backgroundImage = `url('${apiUrl}')`;
-  });
 
   const logoutBtns = document.querySelectorAll("#logout-btn, .logout-btn, [data-logout-btn]");
   logoutBtns.forEach((btn) => {
@@ -49,28 +39,21 @@ function mostrarDatosUsuarioGlobal() {
   });
 }
 
-/**
- * 🔹 Actualiza los datos del navbar (se ejecuta luego de cargar navbar.html).
- */
 function actualizarNavbar() {
   const usuario = localStorage.getItem("usuario");
   if (usuario != null) {
     console.log("Usuario encontrado:", usuario);
+    inicializarAvatarNavbar();
     mostrarDatosUsuarioGlobal();
   } else {
     console.warn("No se encontró usuario en el almacenamiento local.");
   }
 }
 
-/**
- * 🔹 Re-inicializa los componentes de Bootstrap cuando el navbar se carga dinámicamente.
- */
 function reinicializarBootstrapNavbar() {
-  // Solo se ejecuta si Bootstrap está disponible
   if (typeof bootstrap !== "undefined") {
     const toggler = document.querySelector(".navbar-toggler");
     if (toggler) {
-      // Reasigna el comportamiento de colapsar
       toggler.addEventListener("click", function () {
         const targetSelector = toggler.getAttribute("data-bs-target");
         const target = document.querySelector(targetSelector);
@@ -84,7 +67,36 @@ function reinicializarBootstrapNavbar() {
   }
 }
 
-// --- Flujo principal ---
+function actualizarBadgeCarrito() {
+   console.log("antes de todo");
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const cantidadItems = carrito.length;
+  const badge = document.getElementById("carrito-badge");
+ console.log("antes if");
+  if (badge) {
+    console.log("cantidad de items " + cantidadItems);
+    badge.textContent = cantidadItems;
+  } else {
+    console.warn("⚠️ No se encontró el badge con id carrito-badge");
+        console.log("else");
+  }
+}
+
+function inicializarAvatarNavbar() {
+  const avatar = localStorage.getItem("avatar");
+  const usuario = localStorage.getItem("usuario") || "Usuario";
+
+  const avatarElement = document.getElementById("user-avatar");
+  if (avatarElement) {
+    if (avatar) {
+      avatarElement.src = avatar;
+    } else {
+      avatarElement.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+        usuario
+      )}&background=random&size=35`;
+    }
+  }
+}
 
 revisarLogin();
 
@@ -96,9 +108,17 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         navbarContainer.innerHTML = data;
 
-        // 🔹 Re-inicializamos el navbar y usuario una vez cargado
         reinicializarBootstrapNavbar();
         actualizarNavbar();
+
+        if (typeof actualizarBadgeCarrito === "function") {
+          actualizarBadgeCarrito();
+        } else {
+          console.warn("⚠️ actualizarBadgeCarrito no está definida.");
+        }
+
+        ocultarBadge();
+
       })
       .catch((err) => console.error("Error al cargar navbar:", err));
   } else {
@@ -106,3 +126,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+function ocultarBadge() {
+  const avatar = document.getElementById("userDropdown");
+  const badgeNoti = document.getElementById("badge-notificacion");
+  const dropdownToggle = document.querySelector('[data-bs-toggle="dropdown"]');
+
+  if (avatar && badgeNoti) {
+    avatar.addEventListener("click", () => {
+      badgeNoti.classList.add("d-none");
+    });
+  }
+
+  if (dropdownToggle && badgeNoti) {
+    dropdownToggle.addEventListener("hide.bs.dropdown", () => {
+      badgeNoti.classList.remove("d-none");
+    });
+  }
+}
