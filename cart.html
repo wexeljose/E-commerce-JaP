@@ -8,7 +8,11 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
   <link href="css/bootstrap.min.css" rel="stylesheet" />
   <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="css/styles.css" rel="stylesheet" />
+  <link href="css/styles.cart.css" rel="stylesheet" />
   <script src="js/bootstrap.bundle.min.js" defer></script>
   <script src="js/autorizacion.js" defer></script>
   <script src="js/botonTema.js" defer></script>
@@ -20,18 +24,82 @@
   <!-- BARRA DE NAVEGACION-->
   <div id="navbar"></div>
   <!-- BARRA DE NAVEGACION-->
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+  <main class="container-fluid my-5 row">
+    <div id="containerCarrito" class="col-lg-9 col-md-12">
+      <div class="d-inline-flex w-100 containerCartStyles px-4 py-4">
+        <a href="categories.html"><i class="fa-solid fa-circle-arrow-left iCart"></i></a>
+        <div class="d-flex w-100 justify-content-between ms-4">
+          <div class="d-flex gap-2">
+            <i class="fa-solid fa-cart-shopping iCart"></i>
+            <span class="fw-bold">Tu carrito</span>
+          </div>
+          <span class="fw-bold" id="cantProds">Tus productos: 0</span>
+        </div>
       </div>
+
+      <div class="d-flex flex-column justify-content-between containerCartStyles px-4 py-4 mt-4">
+        <div class="containerCart">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th class="text-center">Cantidad</th>
+                <th class="text-center">Precio</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tbodyProds">
+              
+            </tbody>
+          </table>
+        </div>
+        <div class="d-md-flex flex-column justify-center m-auto w-25 text-center d-none">
+          <hr>
+          <a href="categories.html">Agregar más productos</a>
+        </div>
+
+      </div>
+
     </div>
+
+    <aside class="col-lg-3 col-md-12">
+      <div class="containerPago row">
+        <div class="d-flex flex-column gap-3 align-items-center pt-1 pb-4">
+          <div>
+            <span>¿Tienes un código de descuento?</span>
+            <br>
+            <span>Insértalo aquí</span>
+          </div>
+          <input id="codigoInput" type="text" placeholder="Código">
+        </div>
+        <hr>
+        <div class="containerSubtotal py-3">
+          <div class="d-flex justify-content-between mb-3">
+            <span>Subtotal</span>
+            <span id="subtotalPago"></span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span>Gastos del envio</span>
+            <span>Gratis</span>
+          </div>
+        </div>
+        <hr>
+        <div class="containerSubtotal">
+          <div class="d-flex justify-content-between align-items-center">
+            <span>Total:</span>
+            <span id="totalPago"></span>
+          </div>
+          <button class="btnPago">Finalizar compra</button>
+        </div>
+        <div class="containerSubtotal mt-5">
+          <button id="vaciarCarrito" class="btnExtras">Vaciar carrito</button>
+        </div>
+      </div>
+    </aside>
   </main>
+
   <footer class="text-muted">
     <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
       <p>
         Este sitio forma parte de
         <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
