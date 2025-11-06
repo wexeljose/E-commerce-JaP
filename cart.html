@@ -68,13 +68,32 @@
     <aside class="col-lg-3 col-md-12">
       <div class="containerPago row">
         <div class="d-flex flex-column gap-3 align-items-center pt-1 pb-4">
-          <div>
-            <span>¿Tienes un código de descuento?</span>
-            <br>
-            <span>Insértalo aquí</span>
-          </div>
-          <input id="codigoInput" type="text" placeholder="Código">
-        </div>
+
+
+<!--tipo de envio y forma de pago-->
+    <div class="container">
+
+    <label for="envio">Tipo de Envío</label>
+    <select id="envio">
+        <option value="" disabled selected>Seleccione su tipo de envío</option>
+            <option value="premium">Premium 2 a 5 días (15%)</option>
+            <option value="express">Express 5 a 8 días (7%)</option>
+            <option value="standard">Standard 12 a 15 días (5%)</option>
+        </select>
+    </div>
+
+   <label for="pago">Forma de pago</label>
+    <select id="pago">
+        <option value="" disabled selected>Seleccione su forma de pago</option>
+            <option value="tarjeta">Tarjeta de crédito</option>
+            <option value="transferencia">Transferencia</option>
+        </select>
+    </div>
+
+    <button class="btnDireccion">Ingresar dirección de envio</button>
+
+</div>
+
         <hr>
         <div class="containerSubtotal py-3">
           <div class="d-flex justify-content-between mb-3">
