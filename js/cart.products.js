@@ -117,6 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         localStorage.setItem("carrito", JSON.stringify(carrito));
 
+        actualizarBadgeCarrito();
         actualizarTotales();
       });
     });
