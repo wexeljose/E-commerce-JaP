@@ -154,3 +154,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 500);
 
 });
+
+// Guardar dirección de envio
+
+document.getElementById('adressForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    const departamento = document.getElementById('inputState').value;
+    const numero = document.getElementById('inputNumber').value;
+    const localidad = document.getElementById('inputCity').value;
+    const esquina = document.getElementById('inputCross').value;
+    const calle = document.getElementById('inputAddress').value;
+
+    document.getElementById('adressText').textContent = `Dirección de envío: ${calle} ${numero}, Esquina ${esquina}. ${localidad}, ${departamento}`;
+
+    var modal = bootstrap.Modal.getInstance(document.getElementById('addressModal'));
+    modal.hide();
+});
