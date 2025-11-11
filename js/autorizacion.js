@@ -50,7 +50,9 @@ function actualizarNavbar() {
   }
 }
 
-function reinicializarBootstrapNavbar() {
+//Se elimina funcion ya que boostrap hace lo mismo y genera duplicacion de eventos (Abrir y cerrar el menu)
+
+/* function reinicializarBootstrapNavbar() {
   if (typeof bootstrap !== "undefined") {
     const toggler = document.querySelector(".navbar-toggler");
     if (toggler) {
@@ -66,7 +68,7 @@ function reinicializarBootstrapNavbar() {
     console.warn("Bootstrap no está cargado o no disponible.");
   }
 
-}
+} */
 
 function ocultarBadge() {
   const avatar = document.getElementById("userDropdown");
@@ -127,7 +129,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         navbarContainer.innerHTML = data;
 
-        reinicializarBootstrapNavbar();
         actualizarNavbar();
 
         if (typeof actualizarBadgeCarrito === "function") {

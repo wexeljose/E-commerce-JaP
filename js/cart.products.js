@@ -97,8 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
         carrito.push(prodid);
         localStorage.setItem("carrito", JSON.stringify(carrito));
 
-        actualizarTotales();
         actualizarBadgeCarrito();
+        actualizarTotales();
       });
     });
 
