@@ -90,7 +90,9 @@
         </select>
     </div>
 
-    <button class="btnDireccion">Ingresar dirección de envio</button>
+    <button type="button" class="btnDireccion" data-bs-toggle="modal" data-bs-target="#addressModal">Ingresar dirección de envio</button>
+
+    <span id="adressText"></span>
 
 </div>
 
@@ -119,6 +121,75 @@
       </div>
     </aside>
   </main>
+
+  <!-- Modal dirección de envio -->
+  <div class="modal fade" id="addressModal" tabindex="-1" role="dialog" aria-labelledby="addressModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addressModalTitle">Dirección de envio</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Cerrar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="adressForm">
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label for="inputState">Departamento</label>
+                <select id="inputState" class="form-control" required>
+                  <option selected disabled value="">Seleccione su departamento</option>
+                  <option>Artigas</option>
+                  <option>Canelones</option>
+                  <option>Cerro Largo</option>
+                  <option>Colonia</option>
+                  <option>Durazno</option>
+                  <option>Flores</option>
+                  <option>Florida</option>
+                  <option>Lavalleja</option>
+                  <option>Maldonado</option>
+                  <option>Montevideo</option>
+                  <option>Paysandú</option>
+                  <option>Río Negro</option>
+                  <option>Rivera</option>
+                  <option>Rocha</option>
+                  <option>Salto</option>
+                  <option>San José</option>
+                  <option>Soriano</option>
+                  <option>Tacuarembó</option>
+                  <option>Treinta y Tres</option>
+                </select>
+              </div>
+              <div class="mb-3 col-md-6">
+                <label for="inputNumber">Número</label>
+                <input type="text" class="form-control" id="inputNumber" placeholder="Ingrese número de casa" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label for="inputCity">Localidad</label>
+                <input type="text" class="form-control" id="inputCity" placeholder="Ingrese su localidad" required>
+              </div>
+              <div class="mb-3 col-md-6">
+                <label for="inputCross">Esquina</label>
+                <input type="text" class="form-control" id="inputCross" placeholder="Ingrese su esquina" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3">
+                <label for="inputAddress">Calle</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Ingrese su calle" required>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer gap-2">
+          <button type="button" class="btn btn-secondary flex-fill" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" form="adressForm" class="btn btn-danger flex-fill">Ingresar dirección</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="text-muted">
     <div class="container">

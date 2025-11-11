@@ -606,3 +606,9 @@ label[for="mensajeFinal"] {
     border-color: #0056b3;
     color: #ffffff;
 }
+
+.dark-mode .modal-content {
+    background-color: #1e1e1e;
+    color: #eeeeee;
+    border: 1px solid #333333;
+}
