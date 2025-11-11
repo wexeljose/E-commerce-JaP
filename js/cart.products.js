@@ -97,8 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
         carrito.push(prodid);
         localStorage.setItem("carrito", JSON.stringify(carrito));
 
-        actualizarTotales();
         actualizarBadgeCarrito();
+        actualizarTotales();
       });
     });
 
@@ -117,6 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         localStorage.setItem("carrito", JSON.stringify(carrito));
 
+        actualizarBadgeCarrito();
         actualizarTotales();
       });
     });
