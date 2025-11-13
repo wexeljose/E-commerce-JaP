@@ -65,7 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (!producto) {
+    console.log(producto);
+
+    if (!producto || producto.length === 0 || producto === "[]") {
+      console.log("dentro del if producto");
       mostrarToast("Seleccione un producto para comprar.", "danger");
       return;
     }
