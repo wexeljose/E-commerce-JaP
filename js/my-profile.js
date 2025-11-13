@@ -59,3 +59,36 @@ function actualizarAvatar(base64) {
   avatar.src = base64;
 }
 
+function guardarPerfilEnLocalStorage() {
+  const perfil = {
+    nombre: document.getElementById("nombrePerfil").value.trim(),
+    apellido: document.getElementById("apellidoPerfil").value.trim(),
+    email: document.getElementById("emailPerfil").value.trim(),
+    telefono: document.getElementById("telPerfil").value.trim()
+  };
+
+  localStorage.setItem("perfilUsuario", JSON.stringify(perfil));
+
+  return perfil;
+}
+
+document.getElementById("profileForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const perfilGuardado = guardarPerfilEnLocalStorage();
+
+  mostrarToast("Perfil actualizado con éxito.");
+});
+
+function cargarPerfilDesdeLocalStorage() {
+  const perfilJSON = localStorage.getItem("perfilUsuario");
+  if (perfilJSON) {
+    const perfil = JSON.parse(perfilJSON);
+    document.getElementById("nombrePerfil").value = perfil.nombre || "";
+    document.getElementById("apellidoPerfil").value = perfil.apellido || "";
+    document.getElementById("emailPerfil").value = perfil.email || "";
+    document.getElementById("telPerfil").value = perfil.telefono || "";
+  }
+}
+// Cargar el perfil al iniciar la página
+document.addEventListener("DOMContentLoaded", cargarPerfilDesdeLocalStorage);
