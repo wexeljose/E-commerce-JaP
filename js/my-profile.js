@@ -58,3 +58,4 @@ function actualizarAvatar(base64) {
   const avatar = document.getElementById("avatar");
   avatar.src = base64;
 }
+
