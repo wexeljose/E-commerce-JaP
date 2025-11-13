@@ -30,19 +30,55 @@ function actualizarBadgeCarrito() {
 }
 
 
-function finalizarCompra() {
+document.addEventListener("DOMContentLoaded", () => {
+  const camposDireccion = [
+    { id: "inputState", mensaje: "Por favor, seleccione un departamento." },
+    { id: "inputNumber", mensaje: "Por favor, ingrese un número de casa." },
+    { id: "inputCity", mensaje: "Por favor, ingrese una localidad." },
+    { id: "inputCross", mensaje: "Por favor, ingrese una esquina." },
+    { id: "inputAddress", mensaje: "Por favor, ingrese una calle." },
+  ];
 
-  const tipoEnvio = document.getElementById("envio").value;
-  const tipoPago = document.getElementById("pago").value;
+  const validarCampos = (campos) => {
+    for (const campo of campos) {
+      const valor = document.getElementById(campo.id)?.value.trim();
+      if (!valor) {
+        alert(campo.mensaje);
+        return false;
+      }
+    }
+    return true;
+  };
 
-  if (tipoEnvio !== "" && tipoPago !== "") {
+  const finalizarCompra = () => {
+    const tipoEnvio = document.getElementById("envio").value.trim();
+    const tipoPago = document.getElementById("pago").value.trim();
+
+    // Verifica primero los campos de dirección
+    if (!validarCampos(camposDireccion)) return;
+
+    if (!tipoPago) {
+      alert("Por favor, seleccione una forma de pago antes de finalizar la compra.");
+      return;
+    }
+
+    if (!tipoEnvio) {
+      alert("Por favor, seleccione una forma de envío antes de finalizar la compra.");
+      return;
+    }
+
     alert("¡Gracias por su compra!");
-  } else {
-    alert("Por favor, seleccione un tipo de envío y una forma de pago antes de finalizar la compra.");
-  }
+    limpiarCampos();
+  };
 
-}
-const botonFinalizar = document.getElementById("finalizarPago");
-botonFinalizar.addEventListener("click", () => {
-  finalizarCompra();
+  const limpiarCampos = () => {
+    [...camposDireccion.map(c => c.id), "envio", "pago"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = "";
+    });
+  };
+
+  // Event listeners
+  document.getElementById("finalizarPago")?.addEventListener("click", finalizarCompra);
+  document.getElementById("btnIngresar")?.addEventListener("click", () => validarCampos(camposDireccion));
 });

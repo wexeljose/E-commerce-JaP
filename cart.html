@@ -128,9 +128,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="addressModalTitle">Dirección de envio</h5>
-          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Cerrar">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <button type="button" class="btn-close" id="btnCerrar" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form id="adressForm">
@@ -185,7 +183,7 @@
         </div>
         <div class="modal-footer gap-2">
           <button type="button" class="btn btn-secondary flex-fill" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" form="adressForm" class="btn btn-danger flex-fill">Ingresar dirección</button>
+          <button type="submit" form="adressForm" id="btnIngresar" class="btn btn-danger flex-fill">Ingresar dirección</button>
         </div>
       </div>
     </div>
