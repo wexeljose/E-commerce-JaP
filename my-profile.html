@@ -14,6 +14,7 @@
   <script src="js/botonTema.js" defer></script>
   <script src="js/init.js" defer></script>
   <script src="js/my-profile.js" defer></script>
+  <script src="js/toast.js" defer></script>
   <script src="js/cart.js" defer></script>
   <style>
     .bd-placeholder-img {
@@ -33,6 +34,11 @@
   </style>
 </head>
 
+<!-- Contenedor de TOASTS -->
+<div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100;">
+</div>
+
+
 <body>
     <!-- BARRA DE NAVEGACION-->
     <div id="navbar"></div>
@@ -47,13 +53,13 @@
       </div>
 
       <div class="form-section">
-        <form>
-          <input type="text" placeholder="Nombre" />
-          <input type="text" placeholder="Apellido" />
-          <input type="email" placeholder="Email" />
-          <input type="tel" placeholder="Teléfono" />
+        <form id="profileForm">
+          <input id="nombrePerfil" type="text" placeholder="Nombre" required/>
+          <input id="apellidoPerfil" type="text" placeholder="Apellido" required/>
+          <input id="emailPerfil" type="email" placeholder="Email" required/>
+          <input id="telPerfil" type="tel" placeholder="Teléfono" required/>
           <div class="button-wrapper">
-            <button type="submit" class="btn btn-primary">Modificar</button>
+            <button id="btnPerfil" type="submit" class="btn btn-primary">Modificar</button>
           </div>
         </form>
       </div>

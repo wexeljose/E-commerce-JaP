@@ -1,3 +1,5 @@
+var porcentajeEnvio = 0;
+
 function actualizarTotales() {
     let total = 0;
     let productosIds = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -13,8 +15,12 @@ function actualizarTotales() {
         total += precioTotal;
     });
 
-    document.getElementById("totalPago").textContent = "$" + total;
+    const envio = (total * porcentajeEnvio) / 100;
+    const totalFinal = total + envio;
+
     document.getElementById("subtotalPago").textContent = "$" + total;
+    document.getElementById("precioEnvio").textContent = "$" + envio;
+    document.getElementById("totalPago").textContent = "$" + totalFinal;
 }
 
 function irAPaginaProducto(id) {
@@ -172,3 +178,18 @@ document.getElementById('adressForm').addEventListener('submit', function(event)
     var modal = bootstrap.Modal.getInstance(document.getElementById('addressModal'));
     modal.hide();
 });
+
+document.getElementById('envio').addEventListener('change', (event) => {
+    if (event.target.value === 'express') {
+      porcentajeEnvio = 7;
+    } else if (event.target.value === 'premium') {
+      porcentajeEnvio = 15;
+    } else if (event.target.value === 'standard') {
+      porcentajeEnvio = 5;
+    } else {
+      porcentajeEnvio = 0;
+    }
+
+    actualizarTotales();
+});
+

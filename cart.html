@@ -17,9 +17,15 @@
   <script src="js/autorizacion.js" defer></script>
   <script src="js/botonTema.js" defer></script>
   <script src="js/init.js" defer></script>
+  <script src="js/toast.js" defer></script>
   <script src="js/cart.js" defer></script>
   <script src="js/cart.products.js" defer></script>
 </head>
+
+<!-- Contenedor de TOASTS -->
+<div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100;">
+</div>
+
 
 <body>
   <!-- BARRA DE NAVEGACION-->
@@ -50,7 +56,7 @@
               </tr>
             </thead>
             <tbody id="tbodyProds">
-              
+
             </tbody>
           </table>
 
@@ -70,60 +76,61 @@
         <div class="d-flex flex-column gap-3 align-items-center pt-1 pb-4">
 
 
-<!--tipo de envio y forma de pago-->
-    <div class="container">
+          <!--tipo de envio y forma de pago-->
+          <div class="container">
+            <label for="envio">Tipo de Envío</label>
+            <select id="envio">
+              <option value="" disabled selected>Seleccione su tipo de envío</option>
+              <option value="premium">Premium 2 a 5 días (15%)</option>
+              <option value="express">Express 5 a 8 días (7%)</option>
+              <option value="standard">Standard 12 a 15 días (5%)</option>
+            </select>
 
-    <label for="envio">Tipo de Envío</label>
-    <select id="envio">
-        <option value="" disabled selected>Seleccione su tipo de envío</option>
-            <option value="premium">Premium 2 a 5 días (15%)</option>
-            <option value="express">Express 5 a 8 días (7%)</option>
-            <option value="standard">Standard 12 a 15 días (5%)</option>
-        </select>
-    </div>
-
-   <label for="pago">Forma de pago</label>
-    <select id="pago">
-        <option value="" disabled selected>Seleccione su forma de pago</option>
-            <option value="tarjeta">Tarjeta de crédito</option>
-            <option value="transferencia">Transferencia</option>
-        </select>
-    </div>
-
-    <button type="button" class="btnDireccion" data-bs-toggle="modal" data-bs-target="#addressModal">Ingresar dirección de envio</button>
-
-    <span id="adressText"></span>
-
-</div>
-
-        <hr>
-        <div class="containerSubtotal py-3">
-          <div class="d-flex justify-content-between mb-3">
-            <span>Subtotal</span>
-            <span id="subtotalPago"></span>
-          </div>
-          <div class="d-flex justify-content-between">
-            <span>Gastos del envio</span>
-            <span>Gratis</span>
+            <label for="pago">Forma de pago</label>
+            <select id="pago">
+              <option value="" disabled selected>Seleccione su forma de pago</option>
+              <option value="tarjeta">Tarjeta de crédito</option>
+              <option value="transferencia">Transferencia</option>
+            </select>
           </div>
         </div>
-        <hr>
-        <div class="containerSubtotal">
-          <div class="d-flex justify-content-between align-items-center">
-            <span>Total:</span>
-            <span id="totalPago"></span>
-          </div>
-          <button id = "finalizarPago" class="btnPago">Finalizar compra</button>
+
+        <button type="button" class="btnDireccion" data-bs-toggle="modal" data-bs-target="#addressModal">Ingresar
+          dirección de envio</button>
+
+        <span id="adressText"></span>
+
+      </div>
+
+      <hr>
+      <div class="containerSubtotal py-3">
+        <div class="d-flex justify-content-between mb-3">
+          <span>Subtotal</span>
+          <span id="subtotalPago"></span>
         </div>
-        <div class="containerSubtotal mt-5">
-          <button id="vaciarCarrito" class="btnExtras">Vaciar carrito</button>
+        <div class="d-flex justify-content-between">
+          <span>Gastos del envio</span>
+          <span id="precioEnvio">Gratis</span>
         </div>
+      </div>
+      <hr>
+      <div class="containerSubtotal">
+        <div class="d-flex justify-content-between align-items-center">
+          <span>Total:</span>
+          <span id="totalPago"></span>
+        </div>
+        <button id="finalizarPago" class="btnPago">Finalizar compra</button>
+      </div>
+      <div class="containerSubtotal mt-5 justify-center text-center">
+        <button id="vaciarCarrito" class="btnExtras">Vaciar carrito</button>
+      </div>
       </div>
     </aside>
   </main>
 
   <!-- Modal dirección de envio -->
-  <div class="modal fade" id="addressModal" tabindex="-1" role="dialog" aria-labelledby="addressModalTitle" aria-hidden="true">
+  <div class="modal fade" id="addressModal" tabindex="-1" role="dialog" aria-labelledby="addressModalTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -183,7 +190,8 @@
         </div>
         <div class="modal-footer gap-2">
           <button type="button" class="btn btn-secondary flex-fill" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" form="adressForm" id="btnIngresar" class="btn btn-danger flex-fill">Ingresar dirección</button>
+          <button type="submit" form="adressForm" id="btnIngresar" class="btn btn-danger flex-fill">Ingresar
+            dirección</button>
         </div>
       </div>
     </div>
@@ -193,7 +201,7 @@
     <div class="container">
       <p>
         Este sitio forma parte de
-        <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+        <a href="https://jovenesaprogramar.edu.uy/" target="_blank" rel="noopener noreferrer">Jovenes a Programar</a>
       </p>
     </div>
   </footer>

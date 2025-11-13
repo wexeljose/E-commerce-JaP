@@ -1,3 +1,4 @@
+
 function actualizarBadgeCarrito() {
   let carrito = [];
 
@@ -16,19 +17,13 @@ function actualizarBadgeCarrito() {
 
   if (badgeNoti) {
     badgeNoti.textContent = cantidadItems;
-    if (cantidadItems > 0) {
-      badgeNoti.classList.remove("d-none");
-    } else {
-      badgeNoti.classList.add("d-none");
-    }
+    badgeNoti.classList.toggle("d-none", cantidadItems === 0);
   }
 
   if (badgeDropdown) {
     badgeDropdown.textContent = cantidadItems;
-
   }
 }
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const camposDireccion = [
@@ -39,46 +34,55 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: "inputAddress", mensaje: "Por favor, ingrese una calle." },
   ];
 
+
   const validarCampos = (campos) => {
     for (const campo of campos) {
       const valor = document.getElementById(campo.id)?.value.trim();
       if (!valor) {
-        alert(campo.mensaje);
+        mostrarToast(campo.mensaje, "danger");
         return false;
       }
     }
     return true;
   };
 
+  const producto = localStorage.getItem("carrito");
+
   const finalizarCompra = () => {
     const tipoEnvio = document.getElementById("envio").value.trim();
     const tipoPago = document.getElementById("pago").value.trim();
 
-    // Verifica primero los campos de dirección
+
     if (!validarCampos(camposDireccion)) return;
 
     if (!tipoPago) {
-      alert("Por favor, seleccione una forma de pago antes de finalizar la compra.");
+      mostrarToast("Seleccione una forma de pago antes de finalizar la compra.", "danger");
       return;
     }
 
     if (!tipoEnvio) {
-      alert("Por favor, seleccione una forma de envío antes de finalizar la compra.");
+      mostrarToast("Seleccione una forma de envío antes de finalizar la compra.", "danger");
       return;
     }
 
-    alert("¡Gracias por su compra!");
+    if (!producto) {
+      mostrarToast("Seleccione un producto para comprar.", "danger");
+      return;
+    }
+
+    mostrarToast("¡Gracias por su compra!", "success");
+
     limpiarCampos();
   };
 
   const limpiarCampos = () => {
-    [...camposDireccion.map(c => c.id), "envio", "pago"].forEach(id => {
+    [...camposDireccion.map(c => c.id), "envio", "pago", producto].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.value = "";
     });
   };
 
-  // Event listeners
+
   document.getElementById("finalizarPago")?.addEventListener("click", finalizarCompra);
   document.getElementById("btnIngresar")?.addEventListener("click", () => validarCampos(camposDireccion));
 });
