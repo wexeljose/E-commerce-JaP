@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const finalizarCompra = () => {
     const tipoEnvio = document.getElementById("envio").value.trim();
     const tipoPago = document.getElementById("pago").value.trim();
-
+    /*
     if (!validarCampos(camposDireccion)) return;
 
     if (!tipoPago) {
@@ -71,17 +71,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!producto) {
       mostrarToast("Seleccione un producto para comprar.", "danger");
       return;
-    }
+    }*/
+
+    console.log("Producto a comprar:", producto);
+    console.log("Carrito:", localStorage.getItem("carrito"));
+    console.log("Token:", localStorage.getItem("token"));
 
     try {
       fetch(CART_BUY_URL, {
         method: "POST",
-        //Content-Type": "application/json"  y Bearer Token si es necesario
         headers: {
           "Content-Type": "application/json",
-          Bearer: localStorage.getItem("token") || "",
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
-        body: JSON.stringify({ producto }),
+        body: JSON.stringify({ data: localStorage.getItem("carrito") }),
       }).then((response) => {
         if (!response.ok) throw new Error("Error en la compra");
       });

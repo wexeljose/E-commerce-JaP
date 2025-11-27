@@ -19,7 +19,13 @@ let hideSpinner = function () {
 let getJSONData = function (url) {
   let result = {};
   showSpinner();
-  return fetch(url)
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  })
     .then((response) => {
       if (response.ok) {
         return response.json();

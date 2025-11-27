@@ -20,7 +20,13 @@ function init() {
 function loadProducts() {
   const catID = localStorage.getItem("catID"); // Obtiene la categoría del localStorage
   const infoURL = PRODUCTS_URL + catID + EXT_TYPE;
-  fetch(infoURL)
+  fetch(infoURL, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  })
     .then((response) => response.json())
     .then((data) => {
       console.log("Productos cargados:", data);

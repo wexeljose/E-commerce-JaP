@@ -19,6 +19,7 @@ async function procesarLogin() {
         })
         .then((data) => {
           const token = data.token;
+          console.log("Token recibido:", token);
           localStorage.setItem("token", token);
         });
     } catch (error) {
