@@ -1,7 +1,32 @@
 document.getElementById("botonLogin").addEventListener("click", procesarLogin);
 
-function procesarLogin() {
+async function procesarLogin() {
   if (validacion()) {
+    try {
+      fetch(LOGIN_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          usuario: document.getElementById("usuario").value.trim(),
+          password: document.getElementById("password").value.trim(),
+        }),
+      })
+        .then((response) => {
+          if (!response.ok) throw new Error("Error en el inicio de sesión");
+          return response.json();
+        })
+        .then((data) => {
+          const token = data.token;
+          localStorage.setItem("token", token);
+        });
+    } catch (error) {
+      console.error("Error al procesar el inicio de sesión:", error);
+      alert("Hubo un error al iniciar sesión. Intente nuevamente más tarde.");
+      return;
+    }
+
     localStorage.setItem(
       "usuario",
       document.getElementById("usuario").value.trim()

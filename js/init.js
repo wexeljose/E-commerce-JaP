@@ -4,8 +4,9 @@ const PRODUCTS_URL = "http://localhost:3000/cats/cats_products/"; //
 const PRODUCT_INFO_URL = "http://localhost:3000/products/"; //
 const PRODUCT_INFO_COMMENTS_URL = "http://localhost:3000/products_comments/"; //
 const CART_INFO_URL = "http://localhost:3000/user_cart/";
-const CART_BUY_URL = "http://localhost:3000/cart/buy.json";
+const CART_BUY_URL = "http://localhost:3000/user_cart/cart";
 const EXT_TYPE = ".json";
+const LOGIN_URL = "http://localhost:3000/login";
 
 let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";

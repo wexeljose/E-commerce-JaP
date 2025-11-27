@@ -1,4 +1,3 @@
-
 function actualizarBadgeCarrito() {
   let carrito = [];
 
@@ -34,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: "inputAddress", mensaje: "Por favor, ingrese una calle." },
   ];
 
-
   const validarCampos = (campos) => {
     for (const campo of campos) {
       const valor = document.getElementById(campo.id)?.value.trim();
@@ -52,21 +50,47 @@ document.addEventListener("DOMContentLoaded", () => {
     const tipoEnvio = document.getElementById("envio").value.trim();
     const tipoPago = document.getElementById("pago").value.trim();
 
-
     if (!validarCampos(camposDireccion)) return;
 
     if (!tipoPago) {
-      mostrarToast("Seleccione una forma de pago antes de finalizar la compra.", "danger");
+      mostrarToast(
+        "Seleccione una forma de pago antes de finalizar la compra.",
+        "danger"
+      );
       return;
     }
 
     if (!tipoEnvio) {
-      mostrarToast("Seleccione una forma de envío antes de finalizar la compra.", "danger");
+      mostrarToast(
+        "Seleccione una forma de envío antes de finalizar la compra.",
+        "danger"
+      );
       return;
     }
 
     if (!producto) {
       mostrarToast("Seleccione un producto para comprar.", "danger");
+      return;
+    }
+
+    try {
+      fetch(CART_BUY_URL, {
+        method: "POST",
+        //Content-Type": "application/json"  y Bearer Token si es necesario
+        headers: {
+          "Content-Type": "application/json",
+          Bearer: localStorage.getItem("token") || "",
+        },
+        body: JSON.stringify({ producto }),
+      }).then((response) => {
+        if (!response.ok) throw new Error("Error en la compra");
+      });
+    } catch (error) {
+      console.error("Error al procesar la compra:", error);
+      mostrarToast(
+        "Hubo un error al procesar su compra. Intente nuevamente más tarde.",
+        "danger"
+      );
       return;
     }
 
@@ -76,13 +100,18 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const limpiarCampos = () => {
-    [...camposDireccion.map(c => c.id), "envio", "pago", producto].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.value = "";
-    });
+    [...camposDireccion.map((c) => c.id), "envio", "pago", producto].forEach(
+      (id) => {
+        const el = document.getElementById(id);
+        if (el) el.value = "";
+      }
+    );
   };
 
-
-  document.getElementById("finalizarPago")?.addEventListener("click", finalizarCompra);
-  document.getElementById("btnIngresar")?.addEventListener("click", () => validarCampos(camposDireccion));
+  document
+    .getElementById("finalizarPago")
+    ?.addEventListener("click", finalizarCompra);
+  document
+    .getElementById("btnIngresar")
+    ?.addEventListener("click", () => validarCampos(camposDireccion));
 });
