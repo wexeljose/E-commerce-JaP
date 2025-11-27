@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const finalizarCompra = () => {
     const tipoEnvio = document.getElementById("envio").value.trim();
     const tipoPago = document.getElementById("pago").value.trim();
-    /*
     if (!validarCampos(camposDireccion)) return;
 
     if (!tipoPago) {
@@ -71,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!producto) {
       mostrarToast("Seleccione un producto para comprar.", "danger");
       return;
-    }*/
+    }
 
     console.log("Producto a comprar:", producto);
     console.log("Carrito:", localStorage.getItem("carrito"));
